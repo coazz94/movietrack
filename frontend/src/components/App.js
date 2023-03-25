@@ -1,10 +1,11 @@
 import React from "react"
-import Homepage from "./Homepage"
+import { BrowserRouter } from "react-router-dom"
+import RouteManager from "./Routes"
 
 export default function App() {
     return (
-        <div className="center">
-            <Homepage />
-        </div>
+        <BrowserRouter>
+            <RouteManager />
+        </BrowserRouter>
     )
 }
