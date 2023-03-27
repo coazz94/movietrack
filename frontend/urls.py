@@ -6,8 +6,8 @@ from django.views.generic.base import RedirectView
 urlpatterns = [
         # Home url
         path("", index),
-
-        re_path(r'^(?P<path>.*)$', index),
+        ## all other paths
+        re_path(r'^movies/(?P<path>.*)$', index),
 
         ## Movies urls
         # path("movies/", index),

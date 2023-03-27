@@ -20,4 +20,5 @@ urlpatterns = [
     path("admin/", admin.site.urls),
     path("api/", include("api.urls")),
     path("", include("frontend.urls")),
+    path("trakt/", include("trakt.urls")),
 ]

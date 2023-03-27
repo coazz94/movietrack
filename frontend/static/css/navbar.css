@@ -1,0 +1,41 @@
+nav {
+    /* position: fixed; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 5vh;
+    width: 100%;
+    background-color: transparent;
+    transition: 1s ease-out;
+}
+
+.element {
+    opacity: 0;
+    color: white;
+    font-weight: bold;
+    text-decoration: none;
+    transition: 1s ease-out;
+}
+
+.site-icon {
+    margin: 2rem;
+    position: sticky;
+    width: 3.5rem;
+    height: 3.5rem;
+    margin-top: 3.5rem;
+}
+
+.site-link {
+    opacity: 0;
+    transition: 1s ease-out;
+}
+
+nav:hover {
+    background-color: rgba(0, 0, 0, 0.747);
+    transition: 0.7s ease-in;
+}
+
+nav:hover > * {
+    opacity: 1;
+    transition: 0.7s ease-in;
+}
