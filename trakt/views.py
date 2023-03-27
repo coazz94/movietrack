@@ -6,7 +6,7 @@ from rest_framework.response import Response
 # Create your views here.
 
 # https://api.trakt.tv
-
+# https://trakt.docs.apiary.io/#reference/authentication-oauth
 
 class AuthUrl(APIView):
     def get(self, request, format=None):
