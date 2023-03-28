@@ -2,10 +2,12 @@ from django.urls import path, re_path
 from .views import index
 from django.views.generic.base import RedirectView
 
+## for the redirect in the trakt api, so it finds this by the appname
+app_name = "frontend"
 
 urlpatterns = [
         # Home url
-        path("", index),
+        path("", index, name="home"),
         ## all other paths
         re_path(r'^movies/(?P<path>.*)$', index),
 

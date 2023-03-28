@@ -3,5 +3,7 @@ from .views import *
 
 
 urlpatterns = [
-        path("get-auth-url", AuthUrl.as_view()),
+        path("auth-user", create_auth_url.as_view()),
+        path("redirect", trakt_callback),
+        path("is-auth", isAuthenticated.as_view()),
 ]
