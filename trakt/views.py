@@ -62,3 +62,35 @@ class isAuthenticated(APIView):
     def get(self, request, format=None):
         is_auth = is_trakt_auth(self.request.session.session_key)
         return Response({"status" : is_auth}, status=status.HTTP_200_OK)
+
+
+# class revokeAuthentication(APIView):
+#     def post(self, request, format=None):
+#         return Response(request, status=status.HTTP_200_OK)
+
+
+
+def revokeAuthentication(request, format=None):
+
+    token = get_user_tokens(request.session.session_key).refresh_token
+
+    response = post(API_URL + "/oauth/revoke", data= {
+        "client_id": CLIENT_ID,
+        "client_secret": CLIENT_SECRET,
+        "token": token
+    }).json()
+
+
+    # return Response({"a": "bc"}, status=status.HTTP_200_OK)
+
+    # return redirect("frontend:home")
+
+
+
+class getTrendingMovies(APIView):
+    def get(self, request, format=None):
+        url = Request("GET", API_URL + "/movies/trending", params={
+            "Content-Type": "application/json",
+            "trakt-api-version": "2",
+            "trakt-api-key": "[client_id]"
+        }).prepare().url
