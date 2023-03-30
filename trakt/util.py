@@ -1,6 +1,8 @@
 from .models import TraktToken
 from django.utils import timezone
 from datetime import timedelta
+from requests import  post, put, get
+from .credentials import CLIENT_ID, CLIENT_SECRET, API_URL, FANART_API_KEY, FANART_URL
 
 
 def get_user_tokens(session_id):
@@ -59,4 +61,47 @@ def update_or_create_user_tokens(session_id, access_token, token_type, expires_i
                             refresh_token=refresh_token, token_type=token_type, expires_in=expires_in, scope=scope)
         tokens.save()
 
+def execute_trakt_api(session_id, endpoint, pagination):
+    headers = {
+        "Content-Type": "application/json",
+        "trakt-api-version": "2",
+        "trakt-api-key": CLIENT_ID,
+    }
 
+    response = get(API_URL + endpoint + pagination, {}, headers=headers)
+
+    try:
+
+        data = addImagesUrlToTrakt(response.json())
+        return data
+
+    except:
+        return {"Error" : "Issue with Request"}
+
+## TODO Look up if headers aren't for example setting that are send through the url
+def execute_fanart_api(endpoint):
+    url = FANART_URL + endpoint + FANART_API_KEY
+    response = get(url, {})
+
+    try:
+        return response.json()
+    except:
+        return {"Error" : "Issue with Request"}
+
+
+def addImagesUrlToTrakt(data):
+    print(data)
+    return data
+
+def extractIDs(movie_list):
+    pass
+
+
+
+"""
+[{'watchers': 168, 'movie': {'title': 'Avatar: The Way of Water', 'year': 2022, 'ids': {'trakt': 56580, 'slug': 'avatar-the-way-of-water-2022', 'imdb': 'tt1630029', 'tmdb': 76600}}}, {'watchers': 28, 'movie': {'title': 'John Wick: Chapter 4', 'year': 2023, 'ids': {'trakt': 448646, 'slug': 'john-wick-chapter-4-2023', 'imdb': 'tt10366206', 'tmdb': 603692}}}, {'watchers': 27, 'movie': {'title': 'Operation Fortune: Ruse de Guerre',
+'year': 2023, 'ids': {'trakt': 580591, 'slug': 'operation-fortune-ruse-de-guerre-2023', 'imdb': 'tt7985704', 'tmdb': 739405}}}, {'watchers': 25, 'movie': {'title': 'Champions', 'year': 2023, 'ids': {'trakt': 748466,
+'slug': 'champions-2023', 'imdb': 'tt15339570', 'tmdb': 933419}}}, {'watchers': 22, 'movie': {'title': 'Cocaine Bear', 'year': 2023, 'ids': {'trakt': 638759, 'slug': 'cocaine-bear-2023', 'imdb': 'tt14209916', 'tmdb': 804150}}}, {'watchers': 21, 'movie': {'title': 'John Wick: Chapter 3 - Parabellum', 'year': 2019, 'ids': {'trakt': 304278, 'slug': 'john-wick-chapter-3-parabellum-2019', 'imdb': 'tt6146586', 'tmdb': 458156}}}, {'watchers': 17, 'movie': {'title': 'John Wick: Chapter 2', 'year': 2017, 'ids': {'trakt': 205127, 'slug': 'john-wick-chapter-2-2017', 'imdb': 'tt4425200', 'tmdb': 324552}}}, {'watchers': 16, 'movie': {'title': 'A Man Called Otto', 'year': 2022, 'ids': {'trakt': 751967, 'slug': 'a-man-called-otto-2022', 'imdb': 'tt7405458', 'tmdb': 937278}}}, {'watchers': 14, 'movie': {'title': 'Plane', 'year': 2023, 'ids': {'trakt': 483349, 'slug':
+'plane-2023', 'imdb': 'tt5884796', 'tmdb': 646389}}}, {'watchers': 12, 'movie': {'title': 'Luther: The Fallen Sun', 'year': 2023, 'ids': {'trakt': 564840, 'slug': 'luther-the-fallen-sun-2023', 'imdb': 'tt3155298', 'tmdb': 722149}}}]
+
+"""

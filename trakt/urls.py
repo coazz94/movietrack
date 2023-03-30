@@ -7,5 +7,6 @@ urlpatterns = [
         path("redirect", trakt_callback),
         path("is-auth", isAuthenticated.as_view()),
         path("revoke-auth", revokeAuthentication),
-        # path("revoke-auth", revokeAuthentication.as_view()),
+        path("get-data", getTrendingMovies.as_view()),
+        path("get-img", getImagesLink.as_view()),
 ]
