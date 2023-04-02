@@ -33,27 +33,12 @@ class getTrendingMovies(APIView):
         endpoint = "/movies/trending"
         session_id = request.session.session_key
         ## TODO pagination should come from the frontend and be in the request
-        response = execute_trakt_api(session_id, endpoint, pagination="" )
+        response = execute_trakt_api(session_id, endpoint, pagination="1" )
 
         if "error" in response:
             return Response({"error": "no Content in Response"}, status=status.HTTP_204_NO_CONTENT)
 
-        print(type(response))
-
-        return Response(response, status=status.HTTP_204_NO_CONTENT)
-
-##603692, 76600
-
-class getImagesLink(APIView):
-    def get(self, request, format=None):
-        endpoint = f"/movies/{603692}?api_key="
-
-        response = execute_fanart_api(endpoint)
-
         return Response(response, status=status.HTTP_200_OK)
-
-
-
 
 
 def trakt_callback(request, format=None):
