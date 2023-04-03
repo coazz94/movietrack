@@ -2,7 +2,7 @@ import React from "react"
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom"
 import ErrorPage from "../pages/ErrorPage"
 import Homepage from "../pages/HomePage"
-import SourceView from "../pages/SourceView"
+import MediaOverview from "../pages/MediaOverview"
 
 export default function RouteManager() {
     return (
@@ -12,11 +12,11 @@ export default function RouteManager() {
                 <Route index element={<Navigate to={"/movies/trending"} />} />
                 <Route
                     path="trending"
-                    element={<SourceView title={"trending view"} />}
+                    element={<MediaOverview title={"trending view"} />}
                 />
                 <Route
                     path="latest"
-                    element={<SourceView title={"latest view"} />}
+                    element={<MediaOverview title={"latest view"} />}
                 />
                 <Route
                     path="*"
@@ -27,11 +27,11 @@ export default function RouteManager() {
                 <Route index element={<Navigate to={"/shows/trending"} />} />
                 <Route
                     path="trending"
-                    element={<SourceView title={"Shows trending view"} />}
+                    element={<MediaOverview title={"Shows trending view"} />}
                 />
                 <Route
                     path="latest"
-                    element={<SourceView title={"Shows latest view"} />}
+                    element={<MediaOverview title={"Shows latest view"} />}
                 />
                 <Route path="*" element={<Navigate to={"/shows/trending"} />} />
             </Route>

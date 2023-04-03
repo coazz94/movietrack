@@ -4,6 +4,12 @@ import { Link } from "react-router-dom"
 // import cinema_icon from "../../static/images/cinema_icon.png"
 
 export default function Navbar() {
+    function getAuth() {
+        fetch("/trakt/auth-user")
+            .then((response) => response.json())
+            .then((data) => window.location.replace(data.url))
+    }
+
     return (
         <>
             <nav>
@@ -22,6 +28,9 @@ export default function Navbar() {
                 <Link to="shows/" className="element">
                     Shows
                 </Link>
+                <button onClick={() => getAuth()} style={{ margin: "50px" }}>
+                    Auth
+                </button>
             </nav>
         </>
     )

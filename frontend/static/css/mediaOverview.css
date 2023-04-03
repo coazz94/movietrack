@@ -1,0 +1,33 @@
+.grid-section {
+    margin-top: 3rem;
+    margin-left: 25rem;
+    height: 90vh;
+    /* width: 100%; */
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(1, 1fr);
+    height: 35%;
+    border: 1px solid black;
+}
+
+.grid-2 {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    height: 65%;
+}
+
+.grid-first {
+    background-color: red;
+}
+
+.grid-second {
+    background-color: rgb(51, 0, 255);
+}
+
+.grid-element {
+    background-color: yellow;
+}
