@@ -8,37 +8,33 @@ export default function Homepage() {
         "https://upload.wikimedia.org/wikipedia/commons/4/49/A_black_image.jpg"
     )
 
-    // function setBannerImg() {}
-
-    // useEffect(() => {}, [])
-
     console.log(useMovies())
 
     return (
         <div
-            class="background"
+            className="background"
             style={{
                 backgroundImage: `url(${bannerImg})`,
                 backgroundSize: "cover",
             }}
         >
-            <div class="banner">
-                <div class="banner-section">
+            <div className="banner">
+                <div className="banner-section">
                     {/* <img alt="Not Found" src="img.url"></img> */}
                     <h2>MovieTrack. Manage your Favorites</h2>
-                    <p class="site-info">
+                    <p className="site-info">
                         MovieTrack what you watch and when. Discover what's hot
                         and where you can watch it. Share comments, ratings and
                         recommendations.
                     </p>
                     <button>JOIN MovieTrack For Free</button>
                     <footer>
-                        <p class="foot-text">
+                        <p className="foot-text">
                             Copyright © 2023 coazz
                             <a href="https://github.com/coazz94">
                                 <img
                                     src="https://cdn-icons-png.flaticon.com/512/25/25231.png"
-                                    class="foot-img"
+                                    className="foot-img"
                                     alt="no_img"
                                     id="git_img"
                                 ></img>

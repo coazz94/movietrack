@@ -1,12 +1,15 @@
 nav {
+    top: 0;
+    z-index: 9999;
     position: fixed;
     display: flex;
     justify-content: center;
     align-items: center;
     height: 5vh;
     width: 100%;
-    background-color: transparent;
-    transition: 1s ease-out;
+    /* background-color: transparent; */
+    background-color: green;
+    /* transition: 1s ease-out; */
 }
 
 .element {
@@ -30,10 +33,10 @@ nav {
     transition: 1s ease-out;
 }
 
-nav:hover {
+/* nav:hover {
     background-color: rgba(0, 0, 0, 0.5);
     transition: 0.7s ease-in;
-}
+} */
 
 /* nav:hover > * {
     opacity: 1;
