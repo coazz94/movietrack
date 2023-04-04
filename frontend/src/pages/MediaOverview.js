@@ -1,6 +1,7 @@
 import React from "react"
 import { useMovies } from "../components/dataProvider"
 import "../../static/css/mediaOverview.css"
+import Sidebar from "../components/Sidebar"
 
 export default function MediaOverview({ title }) {
     const data = useMovies()
@@ -22,9 +23,20 @@ export default function MediaOverview({ title }) {
     return (
         <div className="media-overview">
             <div className="sidebar">
-                <div>Test</div>
-                <div>Test</div>
-                <div>Test</div>
+                <ul>
+                    <li class="has-subnav">
+                        <a href="#">
+                            <i class="fa fa-globe fa-2x"></i>
+                            <span class="nav-text">Global Surveyors</span>
+                        </a>
+                    </li>
+                    <li class="has-subnav">
+                        <a href="#">
+                            <i class="fa fa-comments fa-2x"></i>
+                            <span class="nav-text">Group Hub Forums</span>
+                        </a>
+                    </li>
+                </ul>
             </div>
             <div className="movie-section">{movies}</div>
         </div>

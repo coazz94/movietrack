@@ -28,7 +28,7 @@
 
 .item-low {
     width: calc(100% / 3);
-    height: 20rem;
+    height: 15rem;
     border: 3px solid black;
 }
 
