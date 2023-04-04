@@ -1,0 +1,40 @@
+.media-overview {
+    margin-top: 5vh;
+    height: 95vh;
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+}
+
+.sidebar {
+    /* position: relative; */
+    /* border: 1px solid red; */
+    background-color: rgb(247, 247, 247);
+    width: 20%;
+}
+
+.movie-section {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.item-top {
+    width: 50%;
+    height: 25rem;
+    border: 3px solid black;
+}
+
+.item-low {
+    width: calc(100% / 3);
+    height: 15rem;
+    border: 3px solid black;
+}
+
+.item-img {
+    object-fit: fill;
+    object-position: center;
+    width: 100%;
+    height: 100%;
+}
