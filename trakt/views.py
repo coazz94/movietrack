@@ -33,7 +33,7 @@ class getTrendingMovies(APIView):
         endpoint = "/movies/trending"
         session_id = request.session.session_key
         ## TODO pagination should come from the frontend and be in the request
-        response = execute_trakt_api(session_id, endpoint, pagination="1" )
+        response = execute_trakt_api(session_id, endpoint, pagination="3" )
 
         if "error" in response:
             return Response({"error": "no Content in Response"}, status=status.HTTP_204_NO_CONTENT)

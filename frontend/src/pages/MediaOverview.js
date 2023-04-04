@@ -13,7 +13,7 @@ export default function MediaOverview({ title }) {
                 <MovieCard
                     movieData={movie.movie}
                     watchers={movie.watchers}
-                    rank={index < 2 ? "top" : "low"}
+                    rank={index < 3 ? "top" : "low"}
                 />
             )
         }

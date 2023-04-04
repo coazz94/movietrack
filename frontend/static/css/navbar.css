@@ -7,16 +7,18 @@ nav {
     align-items: center;
     height: 5vh;
     width: 100%;
-    background-color: transparent;
+    background-color: rgba(0, 0, 0, 0.7);
+}
+
+.nav-home {
     transition: 1s ease-out;
+    background-color: transparent;
 }
 
 .element {
-    /* opacity: 0; */
     color: white;
     font-weight: bold;
     text-decoration: none;
-    transition: 1s ease-out;
     margin: 10px;
 }
 
@@ -28,17 +30,13 @@ nav {
     margin-top: 3.5rem;
 }
 
-.site-link {
-    /* opacity: 0; */
-    transition: 0.3s ease-out;
-}
-
-nav:hover {
+.nav-home:hover {
     background-color: rgba(0, 0, 0, 0.5);
     transition: 0.5s ease-in;
 }
 
-nav:hover > * {
+.element:hover {
     opacity: 1;
-    transition: 0.3s ease-in;
+    color: #ed1c24;
+    transition: 0.15s ease-in;
 }

@@ -1,5 +1,6 @@
 .media-overview {
-    margin-top: 3.3rem;
+    margin-top: 5vh;
+    height: 95vh;
     width: 100%;
     display: flex;
     justify-content: flex-start;
@@ -8,6 +9,7 @@
 .sidebar {
     /* position: relative; */
     /* border: 1px solid red; */
+    background-color: rgb(247, 247, 247);
     width: 20%;
 }
 
@@ -31,6 +33,8 @@
 }
 
 .item-img {
+    object-fit: fill;
+    object-position: center;
     width: 100%;
     height: 100%;
 }

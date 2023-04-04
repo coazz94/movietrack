@@ -10,14 +10,12 @@ export default function Navbar() {
             .then((data) => window.location.replace(data.url))
     }
 
-    // depening on the path use diffrent classes to adjust the navbar
-    // for first its okay so
     const pathname = useLocation().pathname === "/" && true
-    const bgColor = pathname ? "transparent" : "black"
+    // const bgColor = pathname ? "transparent" : "rgba(0,0,0,0.8)"
 
     return (
         <>
-            <nav style={{ backgroundColor: bgColor }}>
+            <nav className={pathname ? "nav-home" : ""}>
                 <Link to="movies/" className="element">
                     Movies
                 </Link>
