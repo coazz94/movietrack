@@ -5,10 +5,8 @@ import { useMovies } from "../components/dataProvider"
 export default function Homepage() {
     // maybe a fixed one if no response
     const [bannerImg, setBanner] = useState(
-        "https://upload.wikimedia.org/wikipedia/commons/4/49/A_black_image.jpg"
+        "http://assets.fanart.tv/fanart/movies/76600/movieposter/avatar-the-way-of-water-641f6bfe818e6.jpg"
     )
-
-    console.log(useMovies())
 
     return (
         <div

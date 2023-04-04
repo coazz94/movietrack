@@ -8,13 +8,15 @@ export default function MediaOverview({ title }) {
     console.log(data)
 
     const movies = data.map((movie, index) => {
-        return (
-            <MovieCard
-                movieData={movie.movie}
-                watchers={movie.watchers}
-                rank={index < 2 ? "top" : "low"}
-            />
-        )
+        if (movie.movie.thumb_url) {
+            return (
+                <MovieCard
+                    movieData={movie.movie}
+                    watchers={movie.watchers}
+                    rank={index < 2 ? "top" : "low"}
+                />
+            )
+        }
     })
 
     return (
@@ -31,10 +33,8 @@ export default function MediaOverview({ title }) {
 
 function MovieCard({ movieData, watchers, rank }) {
     return (
-        <div className={rank === "top" ? "top-item" : "low-item"}>
-            {/* <div>{movieData.title}</div> */}
-            {/* <div>{movieData.poster_url}</div> */}
-            {/* <div>{watchers}</div> */}
+        <div className={rank === "top" ? "item-top" : "item-low"}>
+            <img className="item-img" src={movieData.thumb_url} />
         </div>
     )
 }

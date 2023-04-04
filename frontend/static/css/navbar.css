@@ -7,9 +7,8 @@ nav {
     align-items: center;
     height: 5vh;
     width: 100%;
-    /* background-color: transparent; */
-    background-color: green;
-    /* transition: 1s ease-out; */
+    background-color: transparent;
+    transition: 1s ease-out;
 }
 
 .element {
@@ -18,6 +17,7 @@ nav {
     font-weight: bold;
     text-decoration: none;
     transition: 1s ease-out;
+    margin: 10px;
 }
 
 .site-icon {
@@ -30,15 +30,15 @@ nav {
 
 .site-link {
     /* opacity: 0; */
-    transition: 1s ease-out;
+    transition: 0.3s ease-out;
 }
 
-/* nav:hover {
+nav:hover {
     background-color: rgba(0, 0, 0, 0.5);
-    transition: 0.7s ease-in;
-} */
+    transition: 0.5s ease-in;
+}
 
-/* nav:hover > * {
+nav:hover > * {
     opacity: 1;
-    transition: 0.7s ease-in;
-} */
+    transition: 0.3s ease-in;
+}
