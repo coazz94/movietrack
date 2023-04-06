@@ -34,11 +34,12 @@ class getTraktData(APIView):
         media = self.request.query_params["type"]
         section = self.request.query_params["section"]
         pagination = self.request.query_params["page"]
+        size = self.request.query_params["size"]
         ## TODO adde size of data
         endpoint = f"/{media}/{section}"
         session_id = request.session.session_key
         ## TODO pagination should come from the frontend and be in the request
-        response = execute_trakt_api(session_id, endpoint, pagination=pagination )
+        response = execute_trakt_api(session_id, endpoint, pagination=pagination, size=size )
 
         if "error" in response:
             return Response({"error": "no Content in Response"}, status=status.HTTP_204_NO_CONTENT)

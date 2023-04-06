@@ -14,7 +14,7 @@ export function DataProvider({ children }) {
         fetch(
             BASE_URL +
                 "/trakt/get-trending-data" +
-                `?type=${type}&section=${"trending"}&page=${1}`
+                `?type=${type}&section=${"trending"}&page=${1}&size=${20}`
         )
             .then((response) => response.json())
             .then((data) => {

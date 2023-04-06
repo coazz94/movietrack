@@ -61,13 +61,15 @@ def update_or_create_user_tokens(session_id, access_token, token_type, expires_i
                             refresh_token=refresh_token, token_type=token_type, expires_in=expires_in, scope=scope)
         tokens.save()
 
-def execute_trakt_api(session_id, endpoint, pagination):
+
+## TODO FILTER HERE Movies with out URL
+def execute_trakt_api(session_id, endpoint, pagination, size):
     headers = {
         "Content-Type": "application/json",
         "trakt-api-version": "2",
         "trakt-api-key": CLIENT_ID,
     }
-    pagination = f"?page={pagination}&limit={10}"
+    pagination = f"?page={pagination}&limit={size}"
     response = get(API_URL + endpoint + pagination, {}, headers=headers)
     # try:
     data = addImagesUrlToTraktData(response.json())
