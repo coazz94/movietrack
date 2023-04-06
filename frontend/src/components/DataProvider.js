@@ -8,9 +8,14 @@ export const useMedia = () => useContext(TrendingMovies)
 
 export function DataProvider({ children }) {
     const [trendingMovies, setTrendingMovies] = useState([])
+    const [trendingShows, setTrendingShows] = useState([])
 
-    function getTrendingMovies() {
-        fetch(BASE_URL + "/trakt/get-data")
+    function getData(type = "movies", section = "trending") {
+        fetch(
+            BASE_URL +
+                "/trakt/get-trending-data" +
+                `?type=${type}&section=${"trending"}&page=${1}`
+        )
             .then((response) => response.json())
             .then((data) => {
                 setTrendingMovies(() => data)
@@ -18,7 +23,8 @@ export function DataProvider({ children }) {
     }
 
     useEffect(() => {
-        getTrendingMovies()
+        getData("movies", "trending")
+        // getTrendingShow()
     }, [])
 
     return (

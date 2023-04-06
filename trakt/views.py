@@ -28,17 +28,25 @@ class isAuthenticated(APIView):
         is_auth = is_trakt_auth(self.request.session.session_key)
         return Response({"status" : is_auth}, status=status.HTTP_200_OK)
 
-class getTrendingMovies(APIView):
+## EDIT this function so it accepts from the frontend or movie or show
+class getTraktData(APIView):
     def get(self, request, format=None):
-        endpoint = "/movies/trending"
+        media = self.request.query_params["type"]
+        section = self.request.query_params["section"]
+        pagination = self.request.query_params["page"]
+        ## TODO adde size of data
+        endpoint = f"/{media}/{section}"
         session_id = request.session.session_key
         ## TODO pagination should come from the frontend and be in the request
-        response = execute_trakt_api(session_id, endpoint, pagination="3" )
+        response = execute_trakt_api(session_id, endpoint, pagination=pagination )
 
         if "error" in response:
             return Response({"error": "no Content in Response"}, status=status.HTTP_204_NO_CONTENT)
 
         return Response(response, status=status.HTTP_200_OK)
+
+
+
 
 
 def trakt_callback(request, format=None):
