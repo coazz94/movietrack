@@ -4,7 +4,7 @@ export const BASE_URL = "http://127.0.0.1:8000"
 
 const TrendingMovies = createContext()
 
-export const useMovies = () => useContext(TrendingMovies)
+export const useMedia = () => useContext(TrendingMovies)
 
 export function DataProvider({ children }) {
     const [trendingMovies, setTrendingMovies] = useState([])

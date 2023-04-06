@@ -1,0 +1,36 @@
+.sidebar {
+    position: fixed;
+    width: 20vw;
+    height: 100vh;
+    background-color: #373636;
+}
+
+.nav-link {
+    color: white;
+    text-decoration: none;
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+.nav-title {
+    display: flex;
+    justify-content: center;
+    color: white;
+}
+
+ul {
+    margin-top: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    list-style-type: none;
+    gap: 10px;
+}
+
+.nav-link:hover {
+    color: #ed1c24;
+}
+
+.sidebar:hover {
+    width: 27%;
+    transition: 0.7s ease-in-out;
+}

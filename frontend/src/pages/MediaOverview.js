@@ -1,18 +1,42 @@
 import React from "react"
-import { useMovies } from "../components/dataProvider"
+import { useMedia } from "../components/dataProvider"
 import "../../static/css/mediaOverview.css"
 import Sidebar from "../components/Sidebar"
+import { useLocation } from "react-router"
 
 export default function MediaOverview({ title }) {
-    const data = useMovies()
+    const apiData = useMedia()
+    const mediaData = makeCards(apiData)
+    const location = useLocation().pathname.split("/")
 
-    console.log(data)
+    // Change this to a function, critical is that it is now movie, it should be adaptable
 
-    const movies = data.map((movie, index) => {
+    return (
+        <>
+            <Sidebar title={location[1]} />
+            <div className="media-overview">
+                <div className="movie-section">{mediaData}</div>
+            </div>
+        </>
+    )
+}
+
+function MediaCard({ mediaData, watchers, rank }) {
+    return (
+        <div className={rank === "top" ? "item-top" : "item-low"}>
+            <img className="item-img" src={mediaData.thumb_url} />
+        </div>
+    )
+}
+
+function makeCards(apiData) {
+    let index = 0
+    const mediaData = apiData.map((movie) => {
         if (movie.movie.thumb_url) {
+            index += 1
             return (
-                <MovieCard
-                    movieData={movie.movie}
+                <MediaCard
+                    mediaData={movie.movie}
                     watchers={movie.watchers}
                     rank={index < 3 ? "top" : "low"}
                 />
@@ -20,33 +44,5 @@ export default function MediaOverview({ title }) {
         }
     })
 
-    return (
-        <div className="media-overview">
-            <div className="sidebar">
-                <ul>
-                    <li class="has-subnav">
-                        <a href="#">
-                            <i class="fa fa-globe fa-2x"></i>
-                            <span class="nav-text">Global Surveyors</span>
-                        </a>
-                    </li>
-                    <li class="has-subnav">
-                        <a href="#">
-                            <i class="fa fa-comments fa-2x"></i>
-                            <span class="nav-text">Group Hub Forums</span>
-                        </a>
-                    </li>
-                </ul>
-            </div>
-            <div className="movie-section">{movies}</div>
-        </div>
-    )
-}
-
-function MovieCard({ movieData, watchers, rank }) {
-    return (
-        <div className={rank === "top" ? "item-top" : "item-low"}>
-            <img className="item-img" src={movieData.thumb_url} />
-        </div>
-    )
+    return mediaData
 }

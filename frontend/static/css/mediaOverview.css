@@ -1,16 +1,10 @@
 .media-overview {
-    margin-top: 5vh;
+    margin-top: 6.2vh;
+    margin-left: 20vw;
     height: 95vh;
-    width: 100%;
+    width: 80vw;
     display: flex;
     justify-content: flex-start;
-}
-
-.sidebar {
-    /* position: relative; */
-    /* border: 1px solid red; */
-    background-color: rgb(247, 247, 247);
-    width: 20%;
 }
 
 .movie-section {
@@ -22,13 +16,13 @@
 
 .item-top {
     width: 50%;
-    height: 25rem;
+    height: calc(100% * 0, 4);
     border: 3px solid black;
 }
 
 .item-low {
     width: calc(100% / 3);
-    height: 15rem;
+    height: calc(100% * 0.3);
     border: 3px solid black;
 }
 
