@@ -1,0 +1,39 @@
+[
+    "[{\"watchers\":43,\"show\":{\"title\":\"Succession\",\"year\":2018,\"ids\":{\"trakt\":125479,\"slug\":\"succession\",\"tvdb\":338186,\"imdb\":\"tt76608",
+    "50\",\"tmdb\":76331,\"tvrage\":null}}},{\"watchers\":31,\"show\":{\"title\":\"The Good Doctor\",\"year\":2017,\"ids\":{\"trakt\":119095,\"slug\":\"the",
+    "-good-doctor\",\"tvdb\":328634,\"imdb\":\"tt6470478\",\"tmdb\":71712,\"tvrage\":null}}},{\"watchers\":30,\"show\":{\"title\":\"The Mandalorian\",\"y",
+    "ear\":2019,\"ids\":{\"trakt\":137178,\"slug\":\"the-mandalorian\",\"tvdb\":361753,\"imdb\":\"tt8111088\",\"tmdb\":82856,\"tvrage\":null}}},{\"watche",
+    "rs\":29,\"show\":{\"title\":\"9-1-1\",\"year\":2018,\"ids\":{\"trakt\":125308,\"slug\":\"9-1-1\",\"tvdb\":337907,\"imdb\":\"tt7235466\",\"tmdb\":75219,\"t",
+    "vrage\":null}}},{\"watchers\":26,\"show\":{\"title\":\"The Big Bang Theory\",\"year\":2007,\"ids\":{\"trakt\":1409,\"slug\":\"the-big-bang-theory\"",
+    ",\"tvdb\":80379,\"imdb\":\"tt0898266\",\"tmdb\":1418,\"tvrage\":8511}}},{\"watchers\":25,\"show\":{\"title\":\"NCIS\",\"year\":2003,\"ids\":{\"trakt\":4",
+    "590,\"slug\":\"ncis\",\"tvdb\":72108,\"imdb\":\"tt0364845\",\"tmdb\":4614,\"tvrage\":4628}}},{\"watchers\":23,\"show\":{\"title\":\"The Last of Us\",\"",
+    "year\":2023,\"ids\":{\"trakt\":158947,\"slug\":\"the-last-of-us\",\"tvdb\":392256,\"imdb\":\"tt3581920\",\"tmdb\":100088,\"tvrage\":null}}},{\"watch",
+    "ers\":22,\"show\":{\"title\":\"Ted Lasso\",\"year\":2020,\"ids\":{\"trakt\":162639,\"slug\":\"ted-lasso\",\"tvdb\":383203,\"imdb\":\"tt10986410\",\"tmdb",
+    "\":97546,\"tvrage\":null}}},{\"watchers\":22,\"show\":{\"title\":\"BEEF\",\"year\":2023,\"ids\":{\"trakt\":197667,\"slug\":\"beef\",\"tvdb\":399838,\"im",
+    "db\":\"tt14403178\",\"tmdb\":154385,\"tvrage\":null}}},{\"watchers\":20,\"show\":{\"title\":\"South Park\",\"year\":1997,\"ids\":{\"trakt\":2177,\"slu",
+    "g\":\"south-park\",\"tvdb\":75897,\"imdb\":\"tt0121955\",\"tmdb\":2190,\"tvrage\":5266}}}]"
+]
+
+
+[
+    "[
+        {\"watchers\":46,\"movie\":
+            {\"title\":\"Shazam! Fury of the Gods\",\"year\":2023,\"ids\":
+                {\"trakt\":440996,\"slug\":\"shazam-fury-of-the-gods-20",
+                    "23\",\"imdb\":\"tt10151854\",\"tmdb\":594767
+                }
+            }
+        }
+
+    ,
+
+    {\"watchers\":33,\"movie\":
+        {\"title\":\"65\",\"year\":2023,\"ids\":
+            {\"trakt\":543972,\"slug\":\"65-2023\"",
+                ",\"imdb\":\"tt12261776\",\"tmdb\":700391
+            }
+        }
+    }
+
+
+]

@@ -3,7 +3,6 @@ import React, { useEffect, useState, useContext, createContext } from "react"
 export const BASE_URL = "http://127.0.0.1:8000"
 
 const TrendingMovies = createContext()
-
 export const useMedia = () => useContext(TrendingMovies)
 
 export function DataProvider({ children }) {
@@ -14,7 +13,7 @@ export function DataProvider({ children }) {
         fetch(
             BASE_URL +
                 "/trakt/get-trending-data" +
-                `?type=${type}&section=${"trending"}&page=${1}&size=${20}`
+                `?type=${type}&section=${section}&page=${1}&size=${5}`
         )
             .then((response) => response.json())
             .then((data) => {
@@ -23,7 +22,7 @@ export function DataProvider({ children }) {
     }
 
     useEffect(() => {
-        getData("movies", "trending")
+        getData()
         // getTrendingShow()
     }, [])
 
