@@ -9,11 +9,11 @@ export function DataProvider({ children }) {
     const [trendingMovies, setTrendingMovies] = useState([])
     const [trendingShows, setTrendingShows] = useState([])
 
-    function getData(type = "movies", section = "trending") {
+    function getData(type = "shows", section = "trending") {
         fetch(
             BASE_URL +
                 "/trakt/get-trending-data" +
-                `?type=${type}&section=${section}&page=${1}&size=${5}`
+                `?type=${type}&section=${section}&page=${1}&size=${1}`
         )
             .then((response) => response.json())
             .then((data) => {

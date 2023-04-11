@@ -114,15 +114,23 @@ def execute_fanart_api(code, media_type):
 
 def addImagesUrlToTraktData(data, media_type):
     ## for movies = tmdb, for shows tvdb
+
+    if media_type == "shows":
+        trakt_code = "tvdb"
+    else:
+        trakt_code = "tmdb"
+
     for x, media in enumerate(data):
-        code = media[media_type[:-1]]["ids"]["tmdb"]
+        code = media[media_type[:-1]]["ids"][trakt_code]
         name = media[media_type[:-1]]["title"]
         fanart_data = execute_fanart_api(code=code, media_type=media_type)
         ##TODO Try to get a url, if not set url to ""
         ##TODO adjust the link name of the fanart data to the mediatype
         try:
-            poster_url = fanart_data[media_type[:-1] + "poster"][0]["url"]
-            thumb_url = fanart_data[media_type[:-1] + "thumb"][0]["url"]
+            poster_url = fanart_data["tv" + "poster"][0]["url"]
+            thumb_url = fanart_data["tv" + "thumb"][0]["url"]
+            # poster_url = fanart_data[media_type[:-1] + "poster"][0]["url"]
+            # thumb_url = fanart_data[media_type[:-1] + "thumb"][0]["url"]
             media[media_type[:-1]]["poster_url"] = poster_url
             media[media_type[:-1]]["thumb_url"] = thumb_url
         except:

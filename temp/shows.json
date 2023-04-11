@@ -1,39 +1,259 @@
-[
-    "[{\"watchers\":43,\"show\":{\"title\":\"Succession\",\"year\":2018,\"ids\":{\"trakt\":125479,\"slug\":\"succession\",\"tvdb\":338186,\"imdb\":\"tt76608",
-    "50\",\"tmdb\":76331,\"tvrage\":null}}},{\"watchers\":31,\"show\":{\"title\":\"The Good Doctor\",\"year\":2017,\"ids\":{\"trakt\":119095,\"slug\":\"the",
-    "-good-doctor\",\"tvdb\":328634,\"imdb\":\"tt6470478\",\"tmdb\":71712,\"tvrage\":null}}},{\"watchers\":30,\"show\":{\"title\":\"The Mandalorian\",\"y",
-    "ear\":2019,\"ids\":{\"trakt\":137178,\"slug\":\"the-mandalorian\",\"tvdb\":361753,\"imdb\":\"tt8111088\",\"tmdb\":82856,\"tvrage\":null}}},{\"watche",
-    "rs\":29,\"show\":{\"title\":\"9-1-1\",\"year\":2018,\"ids\":{\"trakt\":125308,\"slug\":\"9-1-1\",\"tvdb\":337907,\"imdb\":\"tt7235466\",\"tmdb\":75219,\"t",
-    "vrage\":null}}},{\"watchers\":26,\"show\":{\"title\":\"The Big Bang Theory\",\"year\":2007,\"ids\":{\"trakt\":1409,\"slug\":\"the-big-bang-theory\"",
-    ",\"tvdb\":80379,\"imdb\":\"tt0898266\",\"tmdb\":1418,\"tvrage\":8511}}},{\"watchers\":25,\"show\":{\"title\":\"NCIS\",\"year\":2003,\"ids\":{\"trakt\":4",
-    "590,\"slug\":\"ncis\",\"tvdb\":72108,\"imdb\":\"tt0364845\",\"tmdb\":4614,\"tvrage\":4628}}},{\"watchers\":23,\"show\":{\"title\":\"The Last of Us\",\"",
-    "year\":2023,\"ids\":{\"trakt\":158947,\"slug\":\"the-last-of-us\",\"tvdb\":392256,\"imdb\":\"tt3581920\",\"tmdb\":100088,\"tvrage\":null}}},{\"watch",
-    "ers\":22,\"show\":{\"title\":\"Ted Lasso\",\"year\":2020,\"ids\":{\"trakt\":162639,\"slug\":\"ted-lasso\",\"tvdb\":383203,\"imdb\":\"tt10986410\",\"tmdb",
-    "\":97546,\"tvrage\":null}}},{\"watchers\":22,\"show\":{\"title\":\"BEEF\",\"year\":2023,\"ids\":{\"trakt\":197667,\"slug\":\"beef\",\"tvdb\":399838,\"im",
-    "db\":\"tt14403178\",\"tmdb\":154385,\"tvrage\":null}}},{\"watchers\":20,\"show\":{\"title\":\"South Park\",\"year\":1997,\"ids\":{\"trakt\":2177,\"slu",
-    "g\":\"south-park\",\"tvdb\":75897,\"imdb\":\"tt0121955\",\"tmdb\":2190,\"tvrage\":5266}}}]"
-]
-
-
-[
-    "[
-        {\"watchers\":46,\"movie\":
-            {\"title\":\"Shazam! Fury of the Gods\",\"year\":2023,\"ids\":
-                {\"trakt\":440996,\"slug\":\"shazam-fury-of-the-gods-20",
-                    "23\",\"imdb\":\"tt10151854\",\"tmdb\":594767
-                }
-            }
+{
+    "name": "Succession",
+    "thetvdb_id": "338186",
+    "hdtvlogo": [
+        {
+            "id": "93756",
+            "url": "http://assets.fanart.tv/fanart/tv/338186/hdtvlogo/succession-5c7301fb8ba10.png",
+            "lang": "en",
+            "likes": "3"
+        },
+        {
+            "id": "93757",
+            "url": "http://assets.fanart.tv/fanart/tv/338186/hdtvlogo/succession-5c7301fb94051.png",
+            "lang": "en",
+            "likes": "3"
         }
-
-    ,
-
-    {\"watchers\":33,\"movie\":
-        {\"title\":\"65\",\"year\":2023,\"ids\":
-            {\"trakt\":543972,\"slug\":\"65-2023\"",
-                ",\"imdb\":\"tt12261776\",\"tmdb\":700391
-            }
+    ],
+    "hdclearart": [
+        {
+            "id": "93759",
+            "url": "http://assets.fanart.tv/fanart/tv/338186/hdclearart/succession-5c73022698074.png",
+            "lang": "en",
+            "likes": "3"
+        },
+        {
+            "id": "141771",
+            "url": "http://assets.fanart.tv/fanart/tv/338186/hdclearart/succession-61c361fe66b69.png",
+            "lang": "en",
+            "likes": "2"
         }
-    }
-
-
-]
+    ],
+    "showbackground": [
+        {
+            "id": "118097",
+            "url": "http://assets.fanart.tv/fanart/tv/338186/showbackground/succession-5f7bffcddeeed.jpg",
+            "lang": "",
+            "likes": "3",
+            "season": "all"
+        },
+        {
+            "id": "118096",
+            "url": "http://assets.fanart.tv/fanart/tv/338186/showbackground/succession-5f7bff72382b9.jpg",
+            "lang": "",
+            "likes": "3",
+            "season": "all"
+        },
+        {
+            "id": "138352",
+            "url": "http://assets.fanart.tv/fanart/tv/338186/showbackground/succession-616f21a0e4c9c.jpg",
+            "lang": "",
+            "likes": "2",
+            "season": "3"
+        },
+        {
+            "id": "93764",
+            "url": "http://assets.fanart.tv/fanart/tv/338186/showbackground/succession-5c7302725fb4e.jpg",
+            "lang": "",
+            "likes": "2",
+            "season": "1"
+        },
+        {
+            "id": "93763",
+            "url": "http://assets.fanart.tv/fanart/tv/338186/showbackground/succession-5c73025e99189.jpg",
+            "lang": "",
+            "likes": "2",
+            "season": "all"
+        },
+        {
+            "id": "93762",
+            "url": "http://assets.fanart.tv/fanart/tv/338186/showbackground/succession-5c73025e91ef2.jpg",
+            "lang": "",
+            "likes": "2",
+            "season": "all"
+        },
+        {
+            "id": "93761",
+            "url": "http://assets.fanart.tv/fanart/tv/338186/showbackground/succession-5c73025e8a5a6.jpg",
+            "lang": "",
+            "likes": "2",
+            "season": "all"
+        },
+        {
+            "id": "169700",
+            "url": "http://assets.fanart.tv/fanart/tv/338186/showbackground/succession-64231eeea76a5.jpg",
+            "lang": "",
+            "likes": "2",
+            "season": "all"
+        },
+        {
+            "id": "169701",
+            "url": "http://assets.fanart.tv/fanart/tv/338186/showbackground/succession-64231efb1d035.jpg",
+            "lang": "",
+            "likes": "2",
+            "season": "all"
+        },
+        {
+            "id": "139345",
+            "url": "http://assets.fanart.tv/fanart/tv/338186/showbackground/succession-618881b0d42c7.jpg",
+            "lang": "",
+            "likes": "0",
+            "season": "3"
+        }
+    ],
+    "tvthumb": [
+        {
+            "id": "93767",
+            "url": "http://assets.fanart.tv/fanart/tv/338186/tvthumb/succession-5c7303c87e951.jpg",
+            "lang": "en",
+            "likes": "2"
+        },
+        {
+            "id": "86872",
+            "url": "http://assets.fanart.tv/fanart/tv/338186/tvthumb/succession-5b60e8d767534.jpg",
+            "lang": "en",
+            "likes": "1"
+        },
+        {
+            "id": "141315",
+            "url": "http://assets.fanart.tv/fanart/tv/338186/tvthumb/succession-61b7ab5fada89.jpg",
+            "lang": "en",
+            "likes": "0"
+        },
+        {
+            "id": "112561",
+            "url": "http://assets.fanart.tv/fanart/tv/338186/tvthumb/succession-5ebe8a9e9df1b.jpg",
+            "lang": "en",
+            "likes": "0"
+        }
+    ],
+    "seasonthumb": [
+        {
+            "id": "138355",
+            "url": "http://assets.fanart.tv/fanart/tv/338186/seasonthumb/succession-616f21e7b9b40.jpg",
+            "lang": "en",
+            "likes": "2",
+            "season": "2"
+        },
+        {
+            "id": "138356",
+            "url": "http://assets.fanart.tv/fanart/tv/338186/seasonthumb/succession-616f21ff719ca.jpg",
+            "lang": "en",
+            "likes": "2",
+            "season": "3"
+        },
+        {
+            "id": "93760",
+            "url": "http://assets.fanart.tv/fanart/tv/338186/seasonthumb/succession-5c73023d84a7b.jpg",
+            "lang": "en",
+            "likes": "2",
+            "season": "1"
+        }
+    ],
+    "seasonbanner": [
+        {
+            "id": "138354",
+            "url": "http://assets.fanart.tv/fanart/tv/338186/seasonbanner/succession-616f21cd64edf.jpg",
+            "lang": "en",
+            "likes": "2",
+            "season": "3"
+        },
+        {
+            "id": "138353",
+            "url": "http://assets.fanart.tv/fanart/tv/338186/seasonbanner/succession-616f21ba12625.jpg",
+            "lang": "en",
+            "likes": "2",
+            "season": "2"
+        },
+        {
+            "id": "93768",
+            "url": "http://assets.fanart.tv/fanart/tv/338186/seasonbanner/succession-5c7303db74a80.jpg",
+            "lang": "en",
+            "likes": "2",
+            "season": "1"
+        }
+    ],
+    "seasonposter": [
+        {
+            "id": "138351",
+            "url": "http://assets.fanart.tv/fanart/tv/338186/seasonposter/succession-616f216bb86ba.jpg",
+            "lang": "en",
+            "likes": "2",
+            "season": "3"
+        },
+        {
+            "id": "138350",
+            "url": "http://assets.fanart.tv/fanart/tv/338186/seasonposter/succession-616f215126967.jpg",
+            "lang": "en",
+            "likes": "2",
+            "season": "2"
+        },
+        {
+            "id": "93758",
+            "url": "http://assets.fanart.tv/fanart/tv/338186/seasonposter/succession-5c7302153fe22.jpg",
+            "lang": "en",
+            "likes": "2",
+            "season": "1"
+        },
+        {
+            "id": "104129",
+            "url": "http://assets.fanart.tv/fanart/tv/338186/seasonposter/succession-5dac7d864b6e0.jpg",
+            "lang": "en",
+            "likes": "1",
+            "season": "1"
+        },
+        {
+            "id": "87252",
+            "url": "http://assets.fanart.tv/fanart/tv/338186/seasonposter/succession-5b779e7da7a18.jpg",
+            "lang": "en",
+            "likes": "0",
+            "season": "1"
+        }
+    ],
+    "tvposter": [
+        {
+            "id": "163430",
+            "url": "http://assets.fanart.tv/fanart/tv/338186/tvposter/succession-63bc77b91e8f3.jpg",
+            "lang": "00",
+            "likes": "2"
+        },
+        {
+            "id": "169699",
+            "url": "http://assets.fanart.tv/fanart/tv/338186/tvposter/succession-64231ed1f064c.jpg",
+            "lang": "00",
+            "likes": "2"
+        },
+        {
+            "id": "168404",
+            "url": "http://assets.fanart.tv/fanart/tv/338186/tvposter/succession-6403704719cde.jpg",
+            "lang": "en",
+            "likes": "1"
+        },
+        {
+            "id": "87251",
+            "url": "http://assets.fanart.tv/fanart/tv/338186/tvposter/succession-5b779e6ac86ae.jpg",
+            "lang": "en",
+            "likes": "1"
+        }
+    ],
+    "tvbanner": [
+        {
+            "id": "112664",
+            "url": "http://assets.fanart.tv/fanart/tv/338186/tvbanner/succession-5ec2f73a041ef.jpg",
+            "lang": "en",
+            "likes": "0"
+        },
+        {
+            "id": "112562",
+            "url": "http://assets.fanart.tv/fanart/tv/338186/tvbanner/succession-5ebe8abca9376.jpg",
+            "lang": "en",
+            "likes": "0"
+        },
+        {
+            "id": "93766",
+            "url": "http://assets.fanart.tv/fanart/tv/338186/tvbanner/succession-5c7303ad5db5c.jpg",
+            "lang": "en",
+            "likes": "0"
+        }
+    ]
+}
