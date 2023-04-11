@@ -1,15 +1,15 @@
 import React from "react"
-import { useMedia } from "../components/dataProvider"
+import { useMovies, useShows } from "../components/dataProvider"
 import "../../static/css/mediaOverview.css"
 import Sidebar from "../components/Sidebar"
 import { useLocation } from "react-router"
 
-export default function MediaOverview({ title }) {
-    const apiData = useMedia()
-    const mediaData = makeCards(apiData)
+export default function MediaOverview() {
     const location = useLocation().pathname.split("/")
+    const apiData = location[1] === "movies" ? useMovies() : useShows()
+    const mediaData = makeCards(apiData)
 
-    // Change this to a function, critical is that it is now movie, it should be adaptable
+    console.log(location)
 
     return (
         <>
@@ -31,13 +31,13 @@ function MediaCard({ mediaData, watchers, rank }) {
 
 function makeCards(apiData) {
     let index = 0
-    const mediaData = apiData.map((movie) => {
-        if (movie.movie.thumb_url) {
+    const mediaData = apiData.map((data) => {
+        if (data.thumb_url) {
             index += 1
             return (
                 <MediaCard
-                    mediaData={movie.movie}
-                    watchers={movie.watchers}
+                    mediaData={data}
+                    watchers={data.watchers}
                     rank={index < 3 ? "top" : "low"}
                 />
             )

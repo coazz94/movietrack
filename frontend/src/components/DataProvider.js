@@ -3,17 +3,20 @@ import React, { useEffect, useState, useContext, createContext } from "react"
 export const BASE_URL = "http://127.0.0.1:8000"
 
 const TrendingMovies = createContext()
-export const useMedia = () => useContext(TrendingMovies)
+const TrendingShows = createContext()
+
+export const useMovies = () => useContext(TrendingMovies)
+export const useShows = () => useContext(TrendingShows)
 
 export function DataProvider({ children }) {
     const [trendingMovies, setTrendingMovies] = useState([])
     const [trendingShows, setTrendingShows] = useState([])
 
-    function getData(type = "shows", section = "trending") {
+    function getMovieData(section) {
         fetch(
             BASE_URL +
                 "/trakt/get-trending-data" +
-                `?type=${type}&section=${section}&page=${1}&size=${1}`
+                `?type=movies&section=${section}&page=${1}&size=${10}`
         )
             .then((response) => response.json())
             .then((data) => {
@@ -21,15 +24,29 @@ export function DataProvider({ children }) {
             })
     }
 
+    function getShowData(section) {
+        fetch(
+            BASE_URL +
+                "/trakt/get-trending-data" +
+                `?type=shows&section=${section}&page=${1}&size=${10}`
+        )
+            .then((response) => response.json())
+            .then((data) => {
+                setTrendingShows(() => data)
+            })
+    }
+
     useEffect(() => {
-        getData()
-        // getTrendingShow()
+        getMovieData("trending")
+        getShowData("trending")
     }, [])
 
     return (
         <>
             <TrendingMovies.Provider value={trendingMovies}>
-                {children}
+                <TrendingShows.Provider value={trendingShows}>
+                    {children}
+                </TrendingShows.Provider>
             </TrendingMovies.Provider>
         </>
     )

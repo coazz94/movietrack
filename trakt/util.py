@@ -84,7 +84,6 @@ def update_or_create_user_tokens(
         tokens.save()
 
 
-## TODO FILTER HERE Movies with out URL
 def execute_trakt_api(session_id, media_type, section, pagination, size):
     headers = {
         "Content-Type": "application/json",
@@ -95,17 +94,11 @@ def execute_trakt_api(session_id, media_type, section, pagination, size):
     pagination = f"?page={pagination}&limit={size}"
     response = get(API_URL + endpoint + pagination, {}, headers=headers)
 
-    # try:
     data = addImagesUrlToTraktData(response.json(), media_type=media_type)
     return data
-    # except:
-    #     return {"Error" : "Issue with Request to Trakt"}
 
 
 def execute_fanart_api(code, media_type):
-    if media_type == "shows":
-        media_type = "tv"
-
     endpoint = f"/{media_type}/{code}?api_key={FANART_API_KEY}"
     response = get(FANART_URL + endpoint, {})
 
@@ -113,26 +106,28 @@ def execute_fanart_api(code, media_type):
 
 
 def addImagesUrlToTraktData(data, media_type):
-    ## for movies = tmdb, for shows tvdb
-
-    if media_type == "shows":
-        trakt_code = "tvdb"
-    else:
+    if media_type == "movies":
         trakt_code = "tmdb"
+        fanart_type = "movies"
+        media_type = "movie"
+        img_type = "movie"
+    else:
+        trakt_code = "tvdb"
+        fanart_type = "tv"
+        media_type = "show"
+        img_type = "tv"
 
-    for x, media in enumerate(data):
-        code = media[media_type[:-1]]["ids"][trakt_code]
-        name = media[media_type[:-1]]["title"]
-        fanart_data = execute_fanart_api(code=code, media_type=media_type)
-        ##TODO Try to get a url, if not set url to ""
-        ##TODO adjust the link name of the fanart data to the mediatype
+    for media in data:
+        code = media[media_type]["ids"][trakt_code]
+        name = media[media_type]["title"]
+
+        fanart_data = execute_fanart_api(code=code, media_type=fanart_type)
         try:
-            poster_url = fanart_data["tv" + "poster"][0]["url"]
-            thumb_url = fanart_data["tv" + "thumb"][0]["url"]
-            # poster_url = fanart_data[media_type[:-1] + "poster"][0]["url"]
-            # thumb_url = fanart_data[media_type[:-1] + "thumb"][0]["url"]
-            media[media_type[:-1]]["poster_url"] = poster_url
-            media[media_type[:-1]]["thumb_url"] = thumb_url
+            poster_url = fanart_data[img_type + "poster"][0]["url"]
+            thumb_url = fanart_data[img_type + "thumb"][0]["url"]
+            media["poster_url"] = poster_url
+            media["thumb_url"] = thumb_url
+
         except:
             continue
 

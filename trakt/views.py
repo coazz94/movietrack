@@ -37,7 +37,6 @@ class isAuthenticated(APIView):
         return Response({"status": is_auth}, status=status.HTTP_200_OK)
 
 
-## EDIT this function so it accepts from the frontend or movie or show
 class getTraktData(APIView):
     def get(self, request, format=None):
         media_type = self.request.query_params["type"]
