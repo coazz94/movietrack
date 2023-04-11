@@ -19,6 +19,10 @@ export default function RouteManager() {
                     element={<MediaOverview title={"latest view"} />}
                 />
                 <Route
+                    path="popular"
+                    element={<MediaOverview title={"latest view"} />}
+                />
+                <Route
                     path="*"
                     element={<Navigate to={"/movies/trending"} />}
                 />

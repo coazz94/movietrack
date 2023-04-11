@@ -12,11 +12,11 @@ export function DataProvider({ children }) {
     const [trendingMovies, setTrendingMovies] = useState([])
     const [trendingShows, setTrendingShows] = useState([])
 
-    function getMovieData(section) {
+    function getMovieData(section, size) {
         fetch(
             BASE_URL +
                 "/trakt/get-trending-data" +
-                `?type=movies&section=${section}&page=${1}&size=${10}`
+                `?type=movies&section=${section}&page=${1}&size=${size}`
         )
             .then((response) => response.json())
             .then((data) => {
@@ -24,11 +24,11 @@ export function DataProvider({ children }) {
             })
     }
 
-    function getShowData(section) {
+    function getShowData(section, size) {
         fetch(
             BASE_URL +
                 "/trakt/get-trending-data" +
-                `?type=shows&section=${section}&page=${1}&size=${10}`
+                `?type=shows&section=${section}&page=${1}&size=${size}`
         )
             .then((response) => response.json())
             .then((data) => {
@@ -37,8 +37,8 @@ export function DataProvider({ children }) {
     }
 
     useEffect(() => {
-        getMovieData("trending")
-        getShowData("trending")
+        getMovieData("trending", 20)
+        getShowData("trending", 20)
     }, [])
 
     return (

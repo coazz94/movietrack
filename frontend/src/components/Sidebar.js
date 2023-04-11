@@ -9,7 +9,7 @@ export default function Sidebar({ title }) {
             <h2 className="nav-title">{firstLetterCapital(title)}</h2>
             <ul>
                 <li class="has-subnav">
-                    <Link to="/" className="nav-link">
+                    <Link to="/movies/popular" className="nav-link">
                         Trending
                     </Link>
                 </li>
