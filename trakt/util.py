@@ -90,6 +90,11 @@ def execute_trakt_api(session_id, media_type, section, pagination, size):
         "trakt-api-version": "2",
         "trakt-api-key": CLIENT_ID,
     }
+
+    # Cap the size at 20 S
+    # if size > 20:
+    #     size = 20
+
     endpoint = f"/{media_type}/{section}"
     pagination = f"?page={pagination}&limit={size}"
     response = get(API_URL + endpoint + pagination, {}, headers=headers)
