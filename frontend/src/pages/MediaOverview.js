@@ -28,7 +28,14 @@ export default function MediaOverview() {
 function MediaCard({ mediaData, watchers, rank }) {
     return (
         <div className={rank === "top" ? "item-top" : "item-low"}>
-            <img className="item-img" src={mediaData.thumb_url} />
+            {/* <img className="item-img" src={mediaData.thumb_url} alt="TEST" /> */}
+            <img
+                className="item-img"
+                src={
+                    "https://trakt.tv/assets/placeholders/thumb/fanart-9cd40e422405c1b23680f7103ccd7601e8b5dc8c468d1f7f8073a1cdaa951c5b.png"
+                }
+                alt="TEST"
+            />
         </div>
     )
 }
