@@ -1,25 +1,19 @@
 import React, { useEffect, useState } from "react"
-import { useMovies, useShows } from "../components/dataProvider"
+import { useTraktData } from "../components/dataProvider"
 import "../../static/css/mediaOverview.css"
 import Sidebar from "../components/Sidebar"
 import { useLocation } from "react-router"
 
-export default function MediaOverview({ section }) {
+export default function MediaOverview() {
     const location = useLocation().pathname.split("/")
-    const [apiData, setApiData] = useState([])
+    const apiData = useTraktData()
     const [mediaData, setMediaData] = useState([])
-
-    useEffect(() => {
-        setApiData(() => (location[1] === "movies" ? useMovies() : useShows()))
-    }, [])
 
     useEffect(() => {
         setMediaData(() => {
             return makeCards(apiData)
         })
     }, [apiData])
-
-    console.log(mediaData)
 
     return (
         <>

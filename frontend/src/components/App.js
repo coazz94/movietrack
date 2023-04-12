@@ -2,15 +2,15 @@ import React from "react"
 import { BrowserRouter } from "react-router-dom"
 import Navbar from "./Navbar"
 import RouteManager from "./Routes"
-import { DataProvider } from "./dataProvider"
+import { APIProvider } from "./dataProvider"
 
 export default function App() {
     return (
         <BrowserRouter>
-            <DataProvider>
+            <APIProvider>
                 <Navbar />
                 <RouteManager />
-            </DataProvider>
+            </APIProvider>
         </BrowserRouter>
     )
 }

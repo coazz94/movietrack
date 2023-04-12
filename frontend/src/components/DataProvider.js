@@ -1,54 +1,42 @@
 import React, { useEffect, useState, useContext, createContext } from "react"
+import { useLocation } from "react-router"
 
 export const BASE_URL = "http://127.0.0.1:8000"
 
-const TrendingMovies = createContext()
-const TrendingShows = createContext()
+const TraktData = createContext()
 
-export const useMovies = () => useContext(TrendingMovies)
-export const useShows = () => useContext(TrendingShows)
+export const useTraktData = () => useContext(TraktData)
 
-export function DataProvider({ children }) {
-    const [trendingMovies, setTrendingMovies] = useState([])
-    const [trendingShows, setTrendingShows] = useState([])
-    // const [popularShows, setPopularShows] = useState([])
+export function APIProvider({ children }) {
+    const location = useLocation()
+    const [traktData, setMovies] = useState([])
 
-    function getMovieData(section, size) {
+    function getTraktData(media, section, size) {
         fetch(
             BASE_URL +
                 "/trakt/get-trending-data" +
-                `?type=movies&section=${section}&page=${1}&size=${size}`
+                `?type=${media}&section=${section}&page=${1}&size=${size}`
         )
             .then((response) => response.json())
             .then((data) => {
-                setTrendingMovies(() => data)
-            })
-    }
-
-    function getShowData(section, size) {
-        fetch(
-            BASE_URL +
-                "/trakt/get-trending-data" +
-                `?type=shows&section=${section}&page=${1}&size=${size}`
-        )
-            .then((response) => response.json())
-            .then((data) => {
-                setTrendingShows(() => data)
+                setMovies(() => data)
             })
     }
 
     useEffect(() => {
-        getMovieData("trending", 20)
-        getShowData("trending", 20)
-    }, [])
+        const locationPath = location.pathname.split("/")
+
+        if (locationPath[2] !== undefined && locationPath[2].length > 0) {
+            console.log("DATA LOADED")
+            getTraktData(locationPath[1], locationPath[2], 20)
+        }
+    }, [location])
 
     return (
         <>
-            <TrendingMovies.Provider value={trendingMovies}>
-                <TrendingShows.Provider value={trendingShows}>
-                    {children}
-                </TrendingShows.Provider>
-            </TrendingMovies.Provider>
+            <TraktData.Provider value={traktData}>
+                {children}
+            </TraktData.Provider>
         </>
     )
 }
