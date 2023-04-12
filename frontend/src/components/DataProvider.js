@@ -11,6 +11,7 @@ export const useShows = () => useContext(TrendingShows)
 export function DataProvider({ children }) {
     const [trendingMovies, setTrendingMovies] = useState([])
     const [trendingShows, setTrendingShows] = useState([])
+    // const [popularShows, setPopularShows] = useState([])
 
     function getMovieData(section, size) {
         fetch(

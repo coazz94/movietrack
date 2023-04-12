@@ -7,11 +7,19 @@ import { useLocation } from "react-router"
 export default function MediaOverview({ section }) {
     const location = useLocation().pathname.split("/")
     const [apiData, setApiData] = useState([])
-    const mediaData = makeCards(apiData)
+    const [mediaData, setMediaData] = useState([])
 
     useEffect(() => {
         setApiData(() => (location[1] === "movies" ? useMovies() : useShows()))
-    }, [section])
+    }, [])
+
+    useEffect(() => {
+        setMediaData(() => {
+            return makeCards(apiData)
+        })
+    }, [apiData])
+
+    console.log(mediaData)
 
     return (
         <>
@@ -33,6 +41,7 @@ function MediaCard({ mediaData, watchers, rank }) {
 
 function makeCards(apiData) {
     let index = 0
+
     const mediaData = apiData.map((data) => {
         if (data.thumb_url) {
             index += 1

@@ -99,7 +99,11 @@ def execute_trakt_api(session_id, media_type, section, pagination, size):
     pagination = f"?page={pagination}&limit={size}"
     response = get(API_URL + endpoint + pagination, {}, headers=headers)
 
-    data = addImagesUrlToTraktData(response.json(), media_type=media_type)
+    ## TODO depending on the section execute a diffrent addImages
+
+    data = addImagesUrlToTraktData(
+        response.json(), media_type=media_type, section=section
+    )
     return data
 
 
@@ -110,7 +114,7 @@ def execute_fanart_api(code, media_type):
     return response.json()
 
 
-def addImagesUrlToTraktData(data, media_type):
+def addImagesUrlToTraktData(data, media_type, section):
     if media_type == "movies":
         trakt_code = "tmdb"
         fanart_type = "movies"
@@ -123,8 +127,12 @@ def addImagesUrlToTraktData(data, media_type):
         img_type = "tv"
 
     for media in data:
-        code = media[media_type]["ids"][trakt_code]
-        name = media[media_type]["title"]
+        if section == "trending":
+            code = media[media_type]["ids"][trakt_code]
+            name = media[media_type]["title"]
+        else:
+            code = media["ids"][trakt_code]
+            name = media["title"]
 
         fanart_data = execute_fanart_api(code=code, media_type=fanart_type)
         try:
