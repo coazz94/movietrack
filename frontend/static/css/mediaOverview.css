@@ -16,7 +16,7 @@
 
 .item-top {
     width: 50%;
-    height: calc(100% * 0, 4);
+    height: calc(100% * 0.4);
     border: 3px solid black;
 }
 

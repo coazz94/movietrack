@@ -3,23 +3,45 @@ import { useTraktData } from "../components/dataProvider"
 import "../../static/css/mediaOverview.css"
 import Sidebar from "../components/Sidebar"
 import { useLocation } from "react-router"
+import alt_img from "../../static/images/alt_img.png"
 
 export default function MediaOverview() {
     const location = useLocation().pathname.split("/")
     const apiData = useTraktData()
     const [mediaData, setMediaData] = useState([])
 
+    // use display and block for showing the img over the normal img
+
     useEffect(() => {
-        setMediaData(() => {
-            return makeCards(apiData)
-        })
+        if (apiData.length > 0) {
+            setMediaData(() => {
+                return makeCards(apiData)
+            })
+        }
     }, [apiData])
 
     return (
         <>
             <Sidebar title={location[1]} />
             <div className="media-overview">
-                <div className="movie-section">{mediaData}</div>
+                <div className="movie-section">
+                    {apiData.length > 0 ? (
+                        mediaData
+                    ) : (
+                        <>
+                            <MediaCard rank="top" />
+                            <MediaCard rank="top" />
+                            <MediaCard />
+                            <MediaCard />
+                            <MediaCard />
+                            <MediaCard />
+                            <MediaCard />
+                            <MediaCard />
+                        </>
+                    )}
+                </div>
+                {/* <div className="movie-section">{mediaData}</div> */}
+                {/* {mediaData} */}
             </div>
         </>
     )
@@ -28,12 +50,9 @@ export default function MediaOverview() {
 function MediaCard({ mediaData, watchers, rank }) {
     return (
         <div className={rank === "top" ? "item-top" : "item-low"}>
-            {/* <img className="item-img" src={mediaData.thumb_url} alt="TEST" /> */}
             <img
                 className="item-img"
-                src={
-                    "https://trakt.tv/assets/placeholders/thumb/fanart-9cd40e422405c1b23680f7103ccd7601e8b5dc8c468d1f7f8073a1cdaa951c5b.png"
-                }
+                src={mediaData ? mediaData.thumb_url : alt_img}
                 alt="TEST"
             />
         </div>
@@ -56,5 +75,6 @@ function makeCards(apiData) {
         }
     })
 
+    // return <div className="movie-section">{mediaData}</div>
     return mediaData
 }
