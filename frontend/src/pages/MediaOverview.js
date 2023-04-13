@@ -1,16 +1,15 @@
 import React, { useEffect, useState } from "react"
-import { useTraktData } from "../components/dataProvider"
 import "../../static/css/mediaOverview.css"
+import alt_img from "../../static/images/alt_img.png"
+import { useTraktData } from "../components/dataProvider"
 import Sidebar from "../components/Sidebar"
 import { useLocation } from "react-router"
-import alt_img from "../../static/images/alt_img.png"
+import { LazyLoadImage } from "react-lazy-load-image-component"
 
 export default function MediaOverview() {
     const location = useLocation().pathname.split("/")
     const apiData = useTraktData()
     const [mediaData, setMediaData] = useState([])
-
-    // use display and block for showing the img over the normal img
 
     useEffect(() => {
         if (apiData.length > 0) {
@@ -20,28 +19,15 @@ export default function MediaOverview() {
         }
     }, [apiData])
 
+    useEffect(() => {
+        setMediaData(() => [])
+    }, [location[1]])
+
     return (
         <>
             <Sidebar title={location[1]} />
             <div className="media-overview">
-                <div className="movie-section">
-                    {apiData.length > 0 ? (
-                        mediaData
-                    ) : (
-                        <>
-                            <MediaCard rank="top" />
-                            <MediaCard rank="top" />
-                            <MediaCard />
-                            <MediaCard />
-                            <MediaCard />
-                            <MediaCard />
-                            <MediaCard />
-                            <MediaCard />
-                        </>
-                    )}
-                </div>
-                {/* <div className="movie-section">{mediaData}</div> */}
-                {/* {mediaData} */}
+                <div className="movie-section">{mediaData}</div>
             </div>
         </>
     )
@@ -50,10 +36,12 @@ export default function MediaOverview() {
 function MediaCard({ mediaData, watchers, rank }) {
     return (
         <div className={rank === "top" ? "item-top" : "item-low"}>
-            <img
+            <LazyLoadImage
                 className="item-img"
-                src={mediaData ? mediaData.thumb_url : alt_img}
-                alt="TEST"
+                width={"100%"}
+                height={"100%"}
+                src={mediaData.thumb_url}
+                placeholderSrc={alt_img}
             />
         </div>
     )
@@ -75,6 +63,5 @@ function makeCards(apiData) {
         }
     })
 
-    // return <div className="movie-section">{mediaData}</div>
     return mediaData
 }

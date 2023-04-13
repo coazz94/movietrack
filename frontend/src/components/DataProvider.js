@@ -27,7 +27,6 @@ export function APIProvider({ children }) {
         const locationPath = location.pathname.split("/")
 
         if (locationPath[2] !== undefined && locationPath[2].length > 0) {
-            console.log("DATA LOADED")
             getTraktData(locationPath[1], locationPath[2], 20)
         }
     }, [location])
