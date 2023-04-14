@@ -1,33 +1,50 @@
 import React from "react"
-import { Link } from "react-router-dom"
+import { NavLink } from "react-router-dom"
 import "../../static/css/sidebar.css"
 import { firstLetterCapital } from "../utils/util"
 
-export default function Sidebar({ title }) {
-    // Add that Trending is the active Tab when switching to the side
+export default function Sidebar({ section }) {
+    console.log(section)
+
     return (
         <div className="sidebar">
-            <h2 className="nav-title">{firstLetterCapital(title)}</h2>
+            <h2 className="nav-title">{firstLetterCapital(section)}</h2>
             <ul>
                 <li class="has-subnav">
-                    <Link to="/movies/trending" className="nav-link">
+                    <NavLink
+                        style={({ isActive }) => ({
+                            color: isActive ? "#ed1c24" : "#fff",
+                        })}
+                        end
+                        to={`/${section}/trending`}
+                        className="nav-link"
+                    >
                         Trending
-                    </Link>
+                    </NavLink>
                 </li>
                 <li class="has-subnav">
-                    <Link to="/movies/popular" className="nav-link">
+                    <NavLink
+                        style={({ isActive }) => ({
+                            color: isActive ? "#ed1c24" : "#fff",
+                        })}
+                        to={`/${section}/popular`}
+                        end
+                        className="nav-link"
+                    >
                         Popular
-                    </Link>
+                    </NavLink>
                 </li>
                 <li class="has-subnav">
-                    <Link to="/" className="nav-link">
+                    {/* <NavLink to={`/${section}/recommended`} className="nav-link"></NavLink> */}
+                    <NavLink to="/" className="nav-link">
                         Recommended
-                    </Link>
+                    </NavLink>
                 </li>
                 <li class="has-subnav">
-                    <Link to="/" className="nav-link">
+                    {/* <NavLink to={`/${section}/watched`} className="nav-link"></NavLink> */}
+                    <NavLink to="/" className="nav-link">
                         Watched
-                    </Link>
+                    </NavLink>
                 </li>
             </ul>
         </div>

@@ -15,10 +15,6 @@ export default function RouteManager() {
                     element={<MediaOverview section={"trending"} />}
                 />
                 <Route
-                    path="latest"
-                    element={<MediaOverview section={"latest"} />}
-                />
-                <Route
                     path="popular"
                     element={<MediaOverview section={"popular"} />}
                 />
@@ -31,11 +27,11 @@ export default function RouteManager() {
                 <Route index element={<Navigate to={"/shows/trending"} />} />
                 <Route
                     path="trending"
-                    element={<MediaOverview title={"Shows trending view"} />}
+                    element={<MediaOverview section={"trending"} />}
                 />
                 <Route
-                    path="latest"
-                    element={<MediaOverview title={"Shows latest view"} />}
+                    path="popular"
+                    element={<MediaOverview section={"popular"} />}
                 />
                 <Route path="*" element={<Navigate to={"/shows/trending"} />} />
             </Route>

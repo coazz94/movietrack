@@ -21,11 +21,11 @@ export default function MediaOverview() {
 
     useEffect(() => {
         setMediaData(() => [])
-    }, [location[1]])
+    }, [location[0], location[1], location[2]])
 
     return (
         <>
-            <Sidebar title={location[1]} />
+            <Sidebar section={location[1]} />
             <div className="media-overview">
                 <div className="movie-section">{mediaData}</div>
             </div>
