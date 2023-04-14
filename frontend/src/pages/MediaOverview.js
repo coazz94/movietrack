@@ -1,16 +1,16 @@
 import React, { useEffect, useState } from "react"
 import "../../static/css/mediaOverview.css"
-import alt_img from "../../static/images/alt_img.png"
 import { useTraktData } from "../components/dataProvider"
 import Sidebar from "../components/Sidebar"
+import MediaCard from "../components/MediaCard"
 import { useLocation } from "react-router"
-import { LazyLoadImage } from "react-lazy-load-image-component"
 
 export default function MediaOverview() {
     const location = useLocation().pathname.split("/")
     const apiData = useTraktData()
     const [mediaData, setMediaData] = useState([])
 
+    // add feature to catch the api only when the Path changes, so reloading trending should not call again the api
     useEffect(() => {
         if (apiData.length > 0) {
             setMediaData(() => {
@@ -30,20 +30,6 @@ export default function MediaOverview() {
                 <div className="movie-section">{mediaData}</div>
             </div>
         </>
-    )
-}
-
-function MediaCard({ mediaData, watchers, rank }) {
-    return (
-        <div className={rank === "top" ? "item-top" : "item-low"}>
-            <LazyLoadImage
-                className="item-img"
-                width={"100%"}
-                height={"100%"}
-                src={mediaData.thumb_url}
-                placeholderSrc={alt_img}
-            />
-        </div>
     )
 }
 

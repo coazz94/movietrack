@@ -1,7 +1,6 @@
 import React from "react"
 import "../../static/css/navbar.css"
 import { NavLink, useLocation, useParams } from "react-router-dom"
-// import cinema_icon from "../../static/images/cinema_icon.png"
 
 export default function Navbar() {
     function getAuth() {
@@ -11,14 +10,14 @@ export default function Navbar() {
     }
 
     const pathname = useLocation().pathname === "/" && true
-    // const bgColor = pathname ? "transparent" : "rgba(0,0,0,0.8)"
 
     return (
         <>
             <nav className={pathname ? "nav-home" : ""}>
                 <NavLink
                     style={({ isActive }) => ({
-                        color: isActive ? "#ed1c24" : "#fff",
+                        color: isActive && "#ed1c24",
+                        fontWeight: isActive ? "bold" : "",
                     })}
                     to="movies/"
                     className="element"
@@ -28,24 +27,17 @@ export default function Navbar() {
 
                 <NavLink
                     style={({ isActive }) => ({
-                        color: isActive ? "#ed1c24" : "#fff",
+                        color: isActive && "#ed1c24",
+                        fontWeight: isActive ? "bold" : "",
                     })}
                     to="/"
                     className="element"
                 >
                     Home
                 </NavLink>
-                {/* <NavLink to="/" className="site-link">
-                    <img
-                        className="site-icon"
-                        src="../../static/images/cinema_icon.png"
-                        alt=""
-                    ></img>
-                </NavLink> */}
-
                 <NavLink
                     style={({ isActive }) => ({
-                        color: isActive ? "#ed1c24" : "#fff",
+                        color: isActive && "#ed1c24",
                     })}
                     to="shows/"
                     className="element"

@@ -4,8 +4,6 @@ import "../../static/css/sidebar.css"
 import { firstLetterCapital } from "../utils/util"
 
 export default function Sidebar({ section }) {
-    console.log(section)
-
     return (
         <div className="sidebar">
             <h2 className="nav-title">{firstLetterCapital(section)}</h2>
@@ -13,7 +11,8 @@ export default function Sidebar({ section }) {
                 <li class="has-subnav">
                     <NavLink
                         style={({ isActive }) => ({
-                            color: isActive ? "#ed1c24" : "#fff",
+                            color: isActive && "#ed1c24",
+                            ":hover": "#ed1c24",
                         })}
                         end
                         to={`/${section}/trending`}
@@ -25,7 +24,8 @@ export default function Sidebar({ section }) {
                 <li class="has-subnav">
                     <NavLink
                         style={({ isActive }) => ({
-                            color: isActive ? "#ed1c24" : "#fff",
+                            color: isActive && "#ed1c24",
+                            ":hover": "#ed1c24",
                         })}
                         to={`/${section}/popular`}
                         end
