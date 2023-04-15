@@ -4,6 +4,7 @@ import { useTraktData } from "../components/dataProvider"
 import Sidebar from "../components/Sidebar"
 import MediaCard from "../components/MediaCard"
 import { useLocation } from "react-router"
+import { NavLink } from "react-router-dom"
 
 export default function MediaOverview() {
     const location = useLocation().pathname.split("/")

@@ -2,9 +2,9 @@ import React, { useEffect, useState, useContext, createContext } from "react"
 import { useLocation } from "react-router"
 
 export const BASE_URL = "http://127.0.0.1:8000"
+const SECTIONS = ["trending", "popular", "recommended", "watched"]
 
 const TraktData = createContext()
-
 export const useTraktData = () => useContext(TraktData)
 
 export function APIProvider({ children }) {
@@ -26,7 +26,10 @@ export function APIProvider({ children }) {
     useEffect(() => {
         const locationPath = location.pathname.split("/")
 
-        if (locationPath[2] !== undefined && locationPath[2].length > 0) {
+        if (
+            locationPath[2] !== undefined &&
+            SECTIONS.includes(locationPath[2])
+        ) {
             getTraktData(locationPath[1], locationPath[2], 20)
         }
     }, [location])

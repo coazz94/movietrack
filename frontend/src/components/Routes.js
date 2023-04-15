@@ -3,6 +3,7 @@ import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom"
 import ErrorPage from "../pages/ErrorPage"
 import Homepage from "../pages/HomePage"
 import MediaOverview from "../pages/MediaOverview"
+import MediaPage from "../pages/MediaPage"
 
 export default function RouteManager() {
     return (
@@ -18,6 +19,7 @@ export default function RouteManager() {
                     path="popular"
                     element={<MediaOverview section={"popular"} />}
                 />
+                <Route path=":title" element={<MediaPage />} />
                 <Route
                     path="*"
                     element={<Navigate to={"/movies/trending"} />}
@@ -33,6 +35,7 @@ export default function RouteManager() {
                     path="popular"
                     element={<MediaOverview section={"popular"} />}
                 />
+                <Route path=":title" element={<MediaPage />} />
                 <Route path="*" element={<Navigate to={"/shows/trending"} />} />
             </Route>
             <Route path="/*" element={<ErrorPage />} />
