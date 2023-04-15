@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react"
 import "../../static/css/homepage.css"
-import { useMovies } from "../components/dataProvider"
+import { useMovies } from "../components/DataProvider"
 
 export default function Homepage() {
     // maybe a fixed one if no response

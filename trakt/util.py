@@ -84,27 +84,40 @@ def update_or_create_user_tokens(
         tokens.save()
 
 
-def execute_trakt_api(session_id, media_type, section, pagination, size):
+def execute_trakt_collection_api(session_id, media_type, section, pagination, size):
     headers = {
         "Content-Type": "application/json",
         "trakt-api-version": "2",
         "trakt-api-key": CLIENT_ID,
     }
 
-    # Cap the size at 20 S
-    # if size > 20:
-    #     size = 20
-
     endpoint = f"/{media_type}/{section}"
-    pagination = f"?page={pagination}&limit={size}"
+    pagination = f"?page={pagination}&limit={10}"
     response = get(API_URL + endpoint + pagination, {}, headers=headers)
 
-    ## TODO depending on the section execute a diffrent addImages
+    formatted_Data = formatTraktJson(response.json(), media_type[:-1], section)
 
     data = addImagesUrlToTraktData(
-        response.json(), media_type=media_type, section=section
+        formatted_Data, media_type=media_type, section=section
     )
     return data
+
+
+def execute_trakt_single_api(session_id, media_type, slug):
+    headers = {
+        "Content-Type": "application/json",
+        "trakt-api-version": "2",
+        "trakt-api-key": CLIENT_ID,
+    }
+
+    endpoint = f"/{media_type}/{slug}?extended=full"
+
+    response = get(API_URL + endpoint, {}, headers=headers)
+
+    if response.status_code != 200:
+        return {"error": "not valid title"}
+
+    return response.json()
 
 
 def execute_fanart_api(code, media_type):
@@ -116,25 +129,14 @@ def execute_fanart_api(code, media_type):
 
 def addImagesUrlToTraktData(data, media_type, section):
     if media_type == "movies":
-        trakt_code = "tmdb"
         fanart_type = "movies"
-        media_type = "movie"
         img_type = "movie"
     else:
-        trakt_code = "tvdb"
         fanart_type = "tv"
-        media_type = "show"
         img_type = "tv"
 
     for media in data:
-        if section == "trending":
-            code = media[media_type]["ids"][trakt_code]
-            name = media[media_type]["title"]
-        else:
-            code = media["ids"][trakt_code]
-            name = media["title"]
-
-        fanart_data = execute_fanart_api(code=code, media_type=fanart_type)
+        fanart_data = execute_fanart_api(code=media["code"], media_type=fanart_type)
         try:
             poster_url = fanart_data[img_type + "poster"][0]["url"]
             thumb_url = fanart_data[img_type + "thumb"][0]["url"]
@@ -145,3 +147,38 @@ def addImagesUrlToTraktData(data, media_type, section):
             continue
 
     return data
+
+
+def formatTraktJson(trakt_response, media_type, section):
+    temp = []
+
+    if media_type == "movie":
+        trakt_code = "tmdb"
+    else:
+        trakt_code = "tvdb"
+
+    for item in trakt_response:
+        if section == "trending":
+            temp.append(
+                {
+                    "type": media_type,
+                    "title": item[media_type]["title"],
+                    "year": item[media_type]["year"],
+                    "code": item[media_type]["ids"][trakt_code],
+                    "slug": item[media_type]["ids"]["slug"],
+                    "watchers": item["watchers"],
+                }
+            )
+        else:
+            temp.append(
+                {
+                    "type": media_type,
+                    "title": item["title"],
+                    "year": item["year"],
+                    "code": item["ids"][trakt_code],
+                    "slug": item["ids"]["slug"],
+                    "watchers": "",
+                }
+            )
+
+    return temp
