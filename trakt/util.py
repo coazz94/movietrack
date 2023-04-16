@@ -117,17 +117,23 @@ def execute_trakt_single_api(session_id, media_type, slug):
     if response.status_code != 200:
         return {"error": "not valid title"}
 
-    return response.json()
+    data = response.json()
+
+    # put this into execute fanart
+    if media_type == "movies":
+        code = "tmdb"
+    else:
+        code = "tvdb"
+
+    fanart_data = execute_fanart_api(data["ids"][code], media_type)
+
+    data["poster_url"] = fanart_data["poster_url"]
+    data["thumb_url"] = fanart_data["thumb_url"]
+
+    return data
 
 
 def execute_fanart_api(code, media_type):
-    endpoint = f"/{media_type}/{code}?api_key={FANART_API_KEY}"
-    response = get(FANART_URL + endpoint, {})
-
-    return response.json()
-
-
-def addImagesUrlToTraktData(data, media_type, section):
     if media_type == "movies":
         fanart_type = "movies"
         img_type = "movie"
@@ -135,16 +141,26 @@ def addImagesUrlToTraktData(data, media_type, section):
         fanart_type = "tv"
         img_type = "tv"
 
-    for media in data:
-        fanart_data = execute_fanart_api(code=media["code"], media_type=fanart_type)
-        try:
-            poster_url = fanart_data[img_type + "poster"][0]["url"]
-            thumb_url = fanart_data[img_type + "thumb"][0]["url"]
-            media["poster_url"] = poster_url
-            media["thumb_url"] = thumb_url
+    endpoint = f"/{fanart_type}/{code}?api_key={FANART_API_KEY}"
+    response = get(FANART_URL + endpoint, {})
+    data = response.json()
 
-        except:
-            continue
+    try:
+        return {
+            "poster_url": data[img_type + "poster"][0]["url"],
+            "thumb_url": data[img_type + "thumb"][0]["url"],
+        }
+
+    except:
+        return {}
+
+
+def addImagesUrlToTraktData(data, media_type, section):
+    for media in data:
+        fanart_data = execute_fanart_api(code=media["code"], media_type=media_type)
+        if fanart_data:
+            media["poster_url"] = fanart_data["poster_url"]
+            media["thumb_url"] = fanart_data["thumb_url"]
 
     return data
 

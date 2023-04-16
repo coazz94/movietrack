@@ -63,9 +63,8 @@ class getTraktData(APIView):
 
 class getMediaData(APIView):
     def get(self, request, format=None):
-        # slug = self.request.query_params["slug"]
-        slug = "the-mandalorian"
-        media_type = "shows"
+        slug = self.request.query_params["slug"]
+        media_type = self.request.query_params["type"]
         session_id = request.session.session_key
 
         response = execute_trakt_single_api(

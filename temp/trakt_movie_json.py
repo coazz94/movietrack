@@ -159,3 +159,127 @@
         "watchers": "",
     },
 ]
+
+{
+    "name": "Shazam! Fury of the Gods",
+    "tmdb_id": "594767",
+    "imdb_id": "tt10151854",
+    "moviedisc": [
+        {
+            "id": "389481",
+            "url": "http://assets.fanart.tv/fanart/movies/594767/moviedisc/shazam-fury-of-the-gods-63f1447d9b5b9.png",
+            "lang": "en",
+            "likes": "5",
+            "disc": "1",
+            "disc_type": "bluray",
+        }
+    ],
+    "moviebanner": [
+        {
+            "id": "388819",
+            "url": "http://assets.fanart.tv/fanart/movies/594767/moviebanner/shazam-fury-of-the-gods-63e7eb642169e.jpg",
+            "lang": "en",
+            "likes": "4",
+        }
+    ],
+    "hdmovielogo": [
+        {
+            "id": "389558",
+            "url": "http://assets.fanart.tv/fanart/movies/594767/hdmovielogo/shazam-fury-of-the-gods-63f27e6482033.png",
+            "lang": "en",
+            "likes": "3",
+        },
+        {
+            "id": "391803",
+            "url": "http://assets.fanart.tv/fanart/movies/594767/hdmovielogo/shazam-fury-of-the-gods-64164911f40d0.png",
+            "lang": "fr",
+            "likes": "2",
+        },
+        {
+            "id": "318708",
+            "url": "http://assets.fanart.tv/fanart/movies/594767/hdmovielogo/untitled-shazam-sequel-5fe9f5b1c8b33.png",
+            "lang": "en",
+            "likes": "1",
+        },
+        {
+            "id": "379787",
+            "url": "http://assets.fanart.tv/fanart/movies/594767/hdmovielogo/shazam-fury-of-the-gods-635e0a106414d.png",
+            "lang": "hi",
+            "likes": "0",
+        },
+        {
+            "id": "372826",
+            "url": "http://assets.fanart.tv/fanart/movies/594767/hdmovielogo/shazam-fury-of-the-gods-62dd61c0a2755.png",
+            "lang": "en",
+            "likes": "0",
+        },
+    ],
+    "moviethumb": [
+        {
+            "id": "380353",
+            "url": "http://assets.fanart.tv/fanart/movies/594767/moviethumb/shazam-fury-of-the-gods-63697ef364ff7.jpg",
+            "lang": "en",
+            "likes": "1",
+        }
+    ],
+    "movieposter": [
+        {
+            "id": "380807",
+            "url": "http://assets.fanart.tv/fanart/movies/594767/movieposter/shazam-fury-of-the-gods-63703b5d1cf14.jpg",
+            "lang": "00",
+            "likes": "1",
+        },
+        {
+            "id": "380808",
+            "url": "http://assets.fanart.tv/fanart/movies/594767/movieposter/shazam-fury-of-the-gods-63703bc56bc23.jpg",
+            "lang": "en",
+            "likes": "1",
+        },
+        {
+            "id": "382963",
+            "url": "http://assets.fanart.tv/fanart/movies/594767/movieposter/shazam-fury-of-the-gods-6392b36bb3ca2.jpg",
+            "lang": "00",
+            "likes": "1",
+        },
+        {
+            "id": "387841",
+            "url": "http://assets.fanart.tv/fanart/movies/594767/movieposter/shazam-fury-of-the-gods-63d83992a58a5.jpg",
+            "lang": "00",
+            "likes": "1",
+        },
+        {
+            "id": "393255",
+            "url": "http://assets.fanart.tv/fanart/movies/594767/movieposter/shazam-fury-of-the-gods-64317b09e5551.jpg",
+            "lang": "en",
+            "likes": "0",
+        },
+    ],
+    "moviebackground": [
+        {
+            "id": "380918",
+            "url": "http://assets.fanart.tv/fanart/movies/594767/moviebackground/shazam-fury-of-the-gods-637227e1230be.jpg",
+            "lang": "",
+            "likes": "1",
+        },
+        {
+            "id": "387431",
+            "url": "http://assets.fanart.tv/fanart/movies/594767/moviebackground/shazam-fury-of-the-gods-63d339ade5025.jpg",
+            "lang": "",
+            "likes": "1",
+        },
+        {
+            "id": "390556",
+            "url": "http://assets.fanart.tv/fanart/movies/594767/moviebackground/shazam-fury-of-the-gods-63fc8bae16a12.jpg",
+            "lang": "",
+            "likes": "1",
+        },
+    ],
+    "hdmovieclearart": [
+        {
+            "id": "380941",
+            "url": "http://assets.fanart.tv/fanart/movies/594767/hdmovieclearart/shazam-fury-of-the-gods-6372657ba30d3.png",
+            "lang": "en",
+            "likes": "1",
+        }
+    ],
+}

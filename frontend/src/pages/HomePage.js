@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from "react"
+import React, { useState } from "react"
 import "../../static/css/homepage.css"
-import { useMovies } from "../components/DataProvider"
+import { Link } from "react-router-dom"
 
 export default function Homepage() {
     // maybe a fixed one if no response
@@ -25,7 +25,9 @@ export default function Homepage() {
                         and where you can watch it. Share comments, ratings and
                         recommendations.
                     </p>
-                    <button>JOIN MovieTrack For Free</button>
+                    <Link to="/login">
+                        <button>JOIN MovieTrack For Free</button>
+                    </Link>
                     <footer>
                         <p className="foot-text">
                             Copyright © 2023 coazz
