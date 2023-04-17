@@ -3,6 +3,8 @@ import "../../static/css/navbar.css"
 import { NavLink, useLocation, useParams } from "react-router-dom"
 
 export default function Navbar() {
+    const disabled = false
+
     function getAuth() {
         fetch("/trakt/auth-user")
             .then((response) => response.json())
@@ -10,6 +12,10 @@ export default function Navbar() {
     }
 
     const pathname = useLocation().pathname === "/" && true
+
+    if (disabled) {
+        return <></>
+    }
 
     return (
         <>

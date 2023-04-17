@@ -18,4 +18,6 @@ urlpatterns = [
         r"^shows/(?P<path>.*)$",
         index,
     ),
+    path("login", index),
+    path("register", index),
 ]

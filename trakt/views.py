@@ -45,7 +45,7 @@ class getTraktData(APIView):
         size = self.request.query_params["size"]
         session_id = request.session.session_key
 
-        response = execute_trakt_api(
+        response = execute_trakt_collection_api(
             session_id=session_id,
             media_type=media_type,
             section=section,
@@ -57,6 +57,24 @@ class getTraktData(APIView):
             return Response(
                 {"error": "no Content in Response"}, status=status.HTTP_204_NO_CONTENT
             )
+
+        return Response(response, status=status.HTTP_200_OK)
+
+
+class getMediaData(APIView):
+    def get(self, request, format=None):
+        slug = self.request.query_params["slug"]
+        media_type = self.request.query_params["type"]
+        session_id = request.session.session_key
+
+        response = execute_trakt_single_api(
+            slug=slug,
+            session_id=session_id,
+            media_type=media_type,
+        )
+
+        if "error" in response:
+            return Response(response, status=status.HTTP_404_NOT_FOUND)
 
         return Response(response, status=status.HTTP_200_OK)
 
