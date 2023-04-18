@@ -28,9 +28,6 @@ DEBUG = True
 ALLOWED_HOSTS = []
 
 
-AUTH_USER_MODEL = 'api.user'
-
-
 # Application definition
 
 INSTALLED_APPS = [
@@ -40,8 +37,8 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
-    "api.apps.ApiConfig",
     "frontend.apps.FrontendConfig",
+    "accounts.apps.AccountsConfig",
     "trakt.apps.TraktConfig",
     "rest_framework",
 ]
