@@ -11,16 +11,21 @@ export function APIProvider({ children }) {
     const location = useLocation()
     const [traktData, setMovies] = useState([])
 
-    function getTraktData(media, section, size) {
-        fetch(
+    async function getTraktData(media, section, size) {
+        const response = await fetch(
             BASE_URL +
                 "/trakt/get-trending-data" +
                 `?type=${media}&section=${section}&page=${1}&size=${size}`
         )
-            .then((response) => response.json())
-            .then((data) => {
-                setMovies(() => data)
-            })
+
+        if (!response.ok) {
+            const message = `An error has occurred: ${response.status}`
+            throw new Error(message)
+        }
+
+        const data = await response.json()
+
+        return data
     }
 
     useEffect(() => {
@@ -31,6 +36,8 @@ export function APIProvider({ children }) {
             SECTIONS.includes(locationPath[2])
         ) {
             getTraktData(locationPath[1], locationPath[2], 20)
+                .then((data) => setMovies(() => data))
+                .catch((error) => console.error(error.message))
         }
     }, [location])
 

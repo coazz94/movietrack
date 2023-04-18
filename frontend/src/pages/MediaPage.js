@@ -9,18 +9,29 @@ export default function MediaPage() {
 
     const [mediaData, setMediaData] = useState([])
 
-    function getMediaInfo(slug, mediaType) {
-        fetch(
+    async function getMediaInfo(slug, mediaType) {
+        const response = await fetch(
             BASE_URL +
                 "/trakt/get-media-data" +
                 `?type=${mediaType}&slug=${slug}`
         )
-            .then((response) => response.json())
-            .then((data) => setMediaData(() => data))
+
+        if (!response.ok) {
+            const message = `An error has occurred: ${response.status}`
+            throw new Error(message)
+        }
+
+        const data = await response.json()
+
+        return data
     }
 
     useEffect(() => {
-        getMediaInfo(location[2], location[1])
+        getMediaInfo(location[2], location[1]).then((data) =>
+            setMediaData(() => data).catch((error) =>
+                console.error(error.message)
+            )
+        )
     }, [])
 
     if (!mediaData) {
