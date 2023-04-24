@@ -43,7 +43,9 @@ INSTALLED_APPS = [
     "rest_framework",
 ]
 
+
 MIDDLEWARE = [
+    "corsheaders.middleware.CorsMiddleware",
     "django.middleware.security.SecurityMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
     "django.middleware.common.CommonMiddleware",
@@ -54,6 +56,16 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = "movietrack.urls"
+
+## User model
+AUTH_USER_MODEL = "accounts.MyUser"
+
+REST_FRAMEWORK = {
+    "DEFAULT_PERMISSION_CLASSES": ("rest_framework.permissions.IsAuthenticated",),
+    "DEFAULT_AUTHENTICATION_CLASSES": (
+        "rest_framework.authentication.SessionAuthentication",
+    ),
+}
 
 TEMPLATES = [
     {

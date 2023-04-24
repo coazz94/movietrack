@@ -1,28 +1,53 @@
 from rest_framework import serializers
-from rest_framework.validators import UniqueValidator
-from django.contrib.auth.models import User
+from django.contrib.auth import get_user_model, authenticate
+
+
+# https://www.youtube.com/watch?v=diB38AvVkHw
+
+
+UserModel = get_user_model()
+
+
+class UserRegisterSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = UserModel
+        fields = "__all__"
+
+    def create(self, clean_data):
+        user_obj = UserModel.objects.create_user(
+            email=clean_data["email"],
+            password=clean_data["password"],
+            username=clean_data["username"],
+        )
+        # user_obj.username = clean_data["username"]
+        user_obj.save()
+        return user_obj
+
+
+class UserLoginSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = UserModel
+        fields = "__all__"
+
+    email = serializers.EmailField()
+    password = serializers.CharField()
+
+    def check_user(self, clean_data):
+        user = authenticate(
+            username=clean_data["email"], password=clean_data["password"]
+        )
+        if not user:
+            raise ValidationsError("user not found")
 
 
 class UserSerializer(serializers.ModelSerializer):
-    ## type is a Emailfield, is required and muss be only one time in our db
-    email = serializers.EmailField(
-        required=True, validators=[UniqueValidator(queryset=User.objects.all())]
-    )
-    username = serializers.CharField(
-        max_length=10,
-        validators=[UniqueValidator(queryset=User.objects.all())],
-    )
-    password = serializers.CharField(min_length=8, write_only=True)
-
-    def create(self, validated_data):
-        user = User.objects.create_user(
-            validated_data["username"],
-            validated_data["email"],
-            validated_data["password"],
-        )
-        return user
-
-    ## states that the corresponding Model is the User model, and the field we use are the one noted
     class Meta:
-        model = User
-        fields = ("id", "username", "email", "password")
+        model: UserModel
+        fields = ("username", "password")
+
+
+# {
+# "email":"test@example.com",
+# "username":"tester",
+# "password":"testing123"
+# }

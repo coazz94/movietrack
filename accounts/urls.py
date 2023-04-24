@@ -1,4 +1,11 @@
 from django.urls import path, re_path
-from . import views
+from .views import *
 
-urlpatterns = [path("api/users", views.UserCreate.as_view(), name="account-create")]
+# from .views import CreateUserView
+
+urlpatterns = [
+    path("login", UserLogin.as_view(), name="login"),
+    path("logout", UserLogout.as_view(), name="logout"),
+    path("register", UserRegister.as_view(), name="register"),
+    path("user", UserView.as_view(), name="user"),
+]
