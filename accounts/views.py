@@ -10,7 +10,7 @@ class UserRegister(APIView):
     permission_classes = (permissions.AllowAny,)
 
     def post(self, request):
-        # validate data eventually
+        # TODO validate data eventually
         clean_data = request.data
         serializer = UserRegisterSerializer(data=clean_data)
         if serializer.is_valid(raise_exception=True):
@@ -28,7 +28,6 @@ class UserLogin(APIView):
     def post(self, request):
         data = request.data
         serializer = UserLoginSerializer(data=data)
-        print(serializer)
         if serializer.is_valid(raise_exception=True):
             user = serializer.check_user(data)
             login(request, user)
@@ -38,7 +37,7 @@ class UserLogin(APIView):
 class UserLogout(APIView):
     def post(self, request):
         logout(request)
-        return Response(serializer.data, status=status.HTTP_200_OK)
+        return Response(status=status.HTTP_200_OK)
 
 
 class UserView(APIView):

@@ -1,5 +1,6 @@
 from rest_framework import serializers
 from django.contrib.auth import get_user_model, authenticate
+from django.core.exceptions import ValidationError
 
 
 # https://www.youtube.com/watch?v=diB38AvVkHw
@@ -19,35 +20,26 @@ class UserRegisterSerializer(serializers.ModelSerializer):
             password=clean_data["password"],
             username=clean_data["username"],
         )
-        # user_obj.username = clean_data["username"]
         user_obj.save()
         return user_obj
 
 
-class UserLoginSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = UserModel
-        fields = "__all__"
-
-    email = serializers.EmailField()
-    password = serializers.CharField()
+class UserLoginSerializer(serializers.Serializer):
+    # email = serializers.EmailField()
+    # password = serializers.CharField()
 
     def check_user(self, clean_data):
+        print(clean_data)
+
         user = authenticate(
-            username=clean_data["email"], password=clean_data["password"]
+            username=clean_data["username"], password=clean_data["password"]
         )
         if not user:
-            raise ValidationsError("user not found")
+            raise ValidationError("user not found")
+        return user
 
 
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
-        model: UserModel
+        model = UserModel
         fields = ("username", "password")
-
-
-# {
-# "email":"test@example.com",
-# "username":"tester",
-# "password":"testing123"
-# }
