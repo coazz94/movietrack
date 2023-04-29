@@ -11,14 +11,17 @@ class UserRegister(APIView):
 
     def post(self, request):
         # TODO validate data eventually
+        # Check for password match again and validate email, and other stuff
         clean_data = request.data
         serializer = UserRegisterSerializer(data=clean_data)
-        if serializer.is_valid(raise_exception=True):
+        if serializer.is_valid():
             user = serializer.create(clean_data)
             if user:
-                return Response(serializer.data, status=status.HTTP_201_CREATED)
+                return Response(
+                    "User successfully created", status=status.HTTP_201_CREATED
+                )
 
-        return Response(serializer.data, status=status.HTTP_400_BAD_REQUEST)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 
 class UserLogin(APIView):

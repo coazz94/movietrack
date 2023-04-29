@@ -1,4 +1,4 @@
-.login-main {
+.main-form {
     height: 100vh;
     background-image: url("https://images.cgames.de/images/gamestar/290/game-of-thrones-ned-stark_6080461.jpg");
     background-size: cover;
@@ -54,6 +54,18 @@ input {
     color: #e5e5e5;
 }
 
+.msg {
+    display: flex;
+    justify-content: center;
+    font-size: 16px;
+    font-weight: bold;
+    color: red;
+}
+
+.msg.success {
+    color: green;
+}
+
 button[class^="button"] {
     width: 100%;
     background-color: #ffffff;
@@ -74,7 +86,7 @@ button[class^="button"]:hover {
     margin-top: 50px;
 }
 
-.button-register {
+.button-form {
     margin-top: 20px;
 }
 

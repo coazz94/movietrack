@@ -10,7 +10,11 @@ export function NavbarHandler({ children }) {
     const pathname = useLocation().pathname.replace("/", "")
 
     useEffect(() => {
-        pathname === "login" && setDisabled(() => true)
+        if (pathname === "login" || pathname === "register") {
+            setDisabled(() => true)
+        } else {
+            setDisabled(() => false)
+        }
     }, [pathname])
 
     if (disabled) {

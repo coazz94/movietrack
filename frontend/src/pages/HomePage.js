@@ -25,7 +25,7 @@ export default function Homepage() {
                         and where you can watch it. Share comments, ratings and
                         recommendations.
                     </p>
-                    <Link to="/login">
+                    <Link to="/register">
                         <button>JOIN MovieTrack For Free</button>
                     </Link>
                     <footer>

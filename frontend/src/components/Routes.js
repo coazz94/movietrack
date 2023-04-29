@@ -5,6 +5,7 @@ import Homepage from "../pages/HomePage"
 import MediaOverview from "../pages/MediaOverview"
 import MediaPage from "../pages/MediaPage"
 import LoginPage from "../pages/LoginPage"
+import RegisterPage from "../pages/RegisterPage"
 
 export default function RouteManager() {
     return (
@@ -41,6 +42,7 @@ export default function RouteManager() {
             </Route>
             <Route path="/*" element={<ErrorPage />} />
             <Route path="/login" element={<LoginPage />} />
+            <Route path="/register" element={<RegisterPage />} />
         </Routes>
     )
 }
