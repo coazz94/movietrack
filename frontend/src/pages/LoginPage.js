@@ -4,6 +4,7 @@ import { Link, useNavigate } from "react-router-dom"
 import { useState, useEffect } from "react"
 import { BASE_URL } from "../components/DataProvider"
 import { getCookie } from "../utils/util"
+import { ReactSession } from "react-client-session"
 
 export default function LoginPage() {
     const [formData, setFormData] = useState({
@@ -40,37 +41,37 @@ export default function LoginPage() {
             body: JSON.stringify(formData),
         }
 
-        fetch(BASE_URL + "/auth" + "/login", requestOptions)
-            .then((response) => {
+        fetch(BASE_URL + "/auth" + "/login", requestOptions).then(
+            (response) => {
                 if (response.ok) {
-                    setErrMsg((prevData) => {
+                    response
+                        .json()
+                        .then((data) => ReactSession.set("session_id", data)),
+                        setErrMsg(() => {
+                            return {
+                                message: "Successfully logged in",
+                                state: true,
+                            }
+                        })
+                } else {
+                    setErrMsg(() => {
                         return {
-                            ...prevData,
-                            state: true,
-                            message: "Logged in",
+                            message: "User not found",
+                            state: false,
                         }
                     })
                 }
-                return response.json()
-            })
-            .then((data) =>
-                setErrMsg((prevData) => {
-                    return {
-                        ...prevData,
-                        message: JSON.stringify(data).replace("{", ""),
-                    }
-                })
-            )
+            }
+        )
     }
 
     useEffect(() => {
         errMsg.state &&
             (console.log("Successfully logged in"),
-            loginUser(),
             setTimeout(() => {
                 navigate("/")
             }, 2000))
-    }, [errMsg])
+    }, [errMsg, setErrMsg])
 
     return (
         <div className="main-form">

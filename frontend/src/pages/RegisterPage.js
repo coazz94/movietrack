@@ -142,8 +142,3 @@ export default function RegisterPage() {
         </div>
     )
 }
-
-// {
-//     "username":"testuser2",
-//     "password":"Test123!"
-//  }

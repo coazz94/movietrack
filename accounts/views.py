@@ -31,10 +31,10 @@ class UserLogin(APIView):
     def post(self, request):
         data = request.data
         serializer = UserLoginSerializer(data=data)
-        if serializer.is_valid(raise_exception=True):
+        if serializer.is_valid():
             user = serializer.check_user(data)
             login(request, user)
-            return Response(serializer.data, status=status.HTTP_200_OK)
+            return Response(request.session.session_key, status=status.HTTP_200_OK)
 
 
 class UserLogout(APIView):

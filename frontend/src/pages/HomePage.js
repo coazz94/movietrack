@@ -1,12 +1,22 @@
 import React, { useState } from "react"
 import "../../static/css/homepage.css"
 import { Link } from "react-router-dom"
+import { ReactSession } from "react-client-session"
 
 export default function Homepage() {
     // maybe a fixed one if no response
     const [bannerImg, setBanner] = useState(
         "http://assets.fanart.tv/fanart/movies/76600/movieposter/avatar-the-way-of-water-641f6bfe818e6.jpg"
     )
+
+    function printSession() {
+        const data = ReactSession.get("session_id")
+        console.log(data)
+    }
+
+    function clearSession() {
+        ReactSession.remove("session_id")
+    }
 
     return (
         <div
@@ -28,6 +38,8 @@ export default function Homepage() {
                     <Link to="/register">
                         <button>JOIN MovieTrack For Free</button>
                     </Link>
+                    <button onClick={printSession}>print</button>
+                    <button onClick={clearSession}>clear</button>
                     <footer>
                         <p className="foot-text">
                             Copyright © 2023 coazz
