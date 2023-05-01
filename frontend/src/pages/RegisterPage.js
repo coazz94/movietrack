@@ -5,6 +5,7 @@ import { BASE_URL } from "../components/DataProvider"
 import { getCookie } from "../utils/util"
 import { useNavigate } from "react-router"
 import { Link } from "react-router-dom"
+import { checkSession } from "../components/SessionHandler"
 
 export default function RegisterPage() {
     const [formData, setFormData] = useState({
@@ -18,6 +19,7 @@ export default function RegisterPage() {
         state: false,
     })
     const navigate = useNavigate()
+    const auth = checkSession()
 
     function handleChange(event) {
         setFormData((prevData) => {
@@ -90,6 +92,12 @@ export default function RegisterPage() {
                 navigate("/")
             }, 3000))
     }, [errMsg])
+
+    useEffect(() => {
+        if (auth) {
+            navigate("/")
+        }
+    }, [auth])
 
     return (
         <div className="main-form">

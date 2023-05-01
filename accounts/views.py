@@ -39,6 +39,7 @@ class UserLogin(APIView):
 
 class UserLogout(APIView):
     def post(self, request):
+        print("here")
         logout(request)
         return Response(status=status.HTTP_200_OK)
 

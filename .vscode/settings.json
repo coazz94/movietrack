@@ -1,3 +1,9 @@
 {
-    "cSpell.words": ["accountmanager", "FANART", "tmdb", "tvdb"]
+    "cSpell.words": [
+        "accountmanager",
+        "FANART",
+        "Sessionhandler",
+        "tmdb",
+        "tvdb"
+    ]
 }

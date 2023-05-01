@@ -3,11 +3,22 @@ nav {
     z-index: 9999;
     position: fixed;
     display: flex;
-    justify-content: center;
+    /* justify-content: center; */
+    justify-content: space-between;
     align-items: center;
     height: 6vh;
     width: 100%;
     background-color: rgba(0, 0, 0, 0.7);
+}
+
+.navbar-elements {
+    display: flex;
+    width: 100%;
+    border: 1px solid black;
+}
+
+.nav-user {
+    border: 1px solid red;
 }
 
 .nav-home {

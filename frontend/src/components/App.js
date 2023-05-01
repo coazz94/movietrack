@@ -4,6 +4,7 @@ import Navbar from "./Navbar"
 import RouteManager from "./Routes"
 import { APIProvider } from "./DataProvider"
 import { NavbarHandler } from "./NavHandler"
+import { SessionHandler } from "./SessionHandler"
 import { ReactSession } from "react-client-session"
 
 export default function App() {
@@ -11,12 +12,14 @@ export default function App() {
 
     return (
         <BrowserRouter>
-            <APIProvider>
-                <NavbarHandler>
-                    <Navbar />
-                </NavbarHandler>
-                <RouteManager />
-            </APIProvider>
+            <SessionHandler>
+                <APIProvider>
+                    <NavbarHandler>
+                        <Navbar />
+                    </NavbarHandler>
+                    <RouteManager />
+                </APIProvider>
+            </SessionHandler>
         </BrowserRouter>
     )
 }

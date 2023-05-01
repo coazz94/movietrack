@@ -1,10 +1,10 @@
 import React from "react"
 import "../../static/css/login.css"
-import { Link, useNavigate } from "react-router-dom"
+import { Link, createBrowserRouter, useNavigate } from "react-router-dom"
 import { useState, useEffect } from "react"
 import { BASE_URL } from "../components/DataProvider"
 import { getCookie } from "../utils/util"
-import { ReactSession } from "react-client-session"
+import { checkSession } from "../components/SessionHandler"
 
 export default function LoginPage() {
     const [formData, setFormData] = useState({
@@ -17,6 +17,7 @@ export default function LoginPage() {
         state: false,
     })
 
+    const auth = checkSession()
     const navigate = useNavigate()
 
     function handleSubmit(event) {
@@ -44,15 +45,12 @@ export default function LoginPage() {
         fetch(BASE_URL + "/auth" + "/login", requestOptions).then(
             (response) => {
                 if (response.ok) {
-                    response
-                        .json()
-                        .then((data) => ReactSession.set("session_id", data)),
-                        setErrMsg(() => {
-                            return {
-                                message: "Successfully logged in",
-                                state: true,
-                            }
-                        })
+                    setErrMsg(() => {
+                        return {
+                            message: "Successfully logged in",
+                            state: true,
+                        }
+                    })
                 } else {
                     setErrMsg(() => {
                         return {
@@ -70,8 +68,15 @@ export default function LoginPage() {
             (console.log("Successfully logged in"),
             setTimeout(() => {
                 navigate("/")
+                navigate(0)
             }, 2000))
     }, [errMsg, setErrMsg])
+
+    useEffect(() => {
+        if (auth) {
+            navigate("/")
+        }
+    }, [auth])
 
     return (
         <div className="main-form">
