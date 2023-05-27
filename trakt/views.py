@@ -4,6 +4,7 @@ from rest_framework.response import Response
 from requests import Request, post
 from .credentials import REDIRECT_URI, CLIENT_ID, CLIENT_SECRET, API_URL
 from .util import *
+from rest_framework import permissions, status
 
 
 # Create your views here.
@@ -38,6 +39,8 @@ class isAuthenticated(APIView):
 
 
 class getTraktData(APIView):
+    permission_classes = (permissions.AllowAny,)
+
     def get(self, request, format=None):
         media_type = self.request.query_params["type"]
         section = self.request.query_params["section"]

@@ -10,7 +10,7 @@ export default function Homepage() {
     )
 
     useEffect(() => {
-        console.log("here")
+        // console.log("here")
     }, [])
 
     return (

@@ -43,7 +43,6 @@ export default function Navbar() {
                     >
                         Movies
                     </NavLink>
-
                     <NavLink
                         style={({ isActive }) => ({
                             color: isActive && "#ed1c24",
@@ -63,15 +62,14 @@ export default function Navbar() {
                     >
                         Shows
                     </NavLink>
-                    <div className="nav-user">
-                        {auth && (
-                            <button className="logout-button" onClick={logOut}>
-                                Logout
-                            </button>
-                        )}
-                    </div>
                 </div>
-
+                <div className="nav-user">
+                    {!auth && (
+                        <button className="xz" onClick={logOut}>
+                            Logout
+                        </button>
+                    )}
+                </div>
                 {/* <button onClick={() => getAuth()} style={{ margin: "50px" }}>
                     Auth
                 </button> */}
