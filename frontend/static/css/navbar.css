@@ -6,9 +6,10 @@ nav {
     grid-template-columns: repeat(3, 1fr);
     justify-items: center;
     align-items: center;
-    height: 6vh;
+    height: 50px;
     width: 100%;
     background-color: rgba(0, 0, 0, 0.7);
+    overflow: hidden;
 }
 
 .navbar-elements {
@@ -20,12 +21,14 @@ nav {
 }
 
 .nav-user {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     grid-column: 3 / 4;
     width: 20%;
 }
 
 .nav-home {
-    transition: 1s ease-out;
     background-color: transparent;
 }
 
@@ -33,7 +36,6 @@ nav {
     color: white;
     font-weight: bold;
     text-decoration: none;
-    /* margin: 10px; */
 }
 
 .site-icon {
@@ -55,7 +57,14 @@ nav {
     transition: 0.15s ease-in;
 }
 
-.xz {
-    min-height: 1rem;
+.nav-profile {
+    width: 50px;
+    height: 50px;
+}
+
+.logout-button {
+    margin-left: 20%;
     padding: 0.5rem;
+    height: 50%;
+    min-height: 50%;
 }

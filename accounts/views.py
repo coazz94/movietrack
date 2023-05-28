@@ -45,9 +45,11 @@ class UserLogout(APIView):
 
 
 class UserView(APIView):
-    permission_classes = (permissions.IsAuthenticated,)
+    permission_classes = (permissions.AllowAny,)
     authentication_classes = (SessionAuthentication,)
 
     def get(self, request):
-        serializer = UserSerializer(request.user)
-        return Response({"user": serializer.data}, status=status.HTTP_200_OK)
+        if not request.user.is_anonymous:
+            serializer = UserSerializer(request.user)
+            return Response({"user": serializer.data}, status=status.HTTP_200_OK)
+        return Response({"message": "User not logged in "}, status=status.HTTP_200_OK)

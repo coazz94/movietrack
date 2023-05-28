@@ -6,11 +6,11 @@ import { checkSession } from "./SessionHandler"
 import { getCookie } from "../utils/util"
 
 export default function Navbar() {
-    function getAuth() {
-        fetch("/trakt/auth-user")
-            .then((response) => response.json())
-            .then((data) => window.location.replace(data.url))
-    }
+    // function getAuth() {
+    //     fetch("/trakt/auth-user")
+    //         .then((response) => response.json())
+    //         .then((data) => window.location.replace(data.url))
+    // }
 
     const pathname = useLocation().pathname === "/" && true
     const navigate = useNavigate()
@@ -64,8 +64,15 @@ export default function Navbar() {
                     </NavLink>
                 </div>
                 <div className="nav-user">
-                    {!auth && (
-                        <button className="xz" onClick={logOut}>
+                    <NavLink to={auth ? "/user" : "/login"}>
+                        <img
+                            className="nav-profile"
+                            src="/static/images/profile.png"
+                        />
+                    </NavLink>
+
+                    {auth && (
+                        <button className="logout-button" onClick={logOut}>
                             Logout
                         </button>
                     )}

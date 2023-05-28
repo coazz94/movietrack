@@ -7,8 +7,6 @@ from .util import *
 from rest_framework import permissions, status
 
 
-# Create your views here.
-
 # https://api.trakt.tv
 # https://trakt.docs.apiary.io/#reference/authentication-oauth
 
